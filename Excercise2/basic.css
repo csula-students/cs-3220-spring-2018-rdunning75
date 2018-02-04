@@ -11,9 +11,22 @@
 }
 
  #table {
-
+	
 	border-collapse: collapse;
 	padding-left: 5em;
+}
+
+#stuff{
+	
+}
+
+#description{
+	width: 300px;
+	
+}
+
+#title{
+	font-family: "Courier New", Courier, monospace;
 }
 
 tr:nth-child(even) {
@@ -27,5 +40,5 @@ div#stuff{
 }
 
 button{
-	
+
 }
