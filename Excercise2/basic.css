@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+
+.container{
+	display: flex;
+}
+
+.container-inner{
+	display: flex;
+	flex-direction: column;
+}
+
+ #table {
+
+	border-collapse: collapse;
+	padding-left: 5em;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+div#stuff{
+	padding: 1em;
+	
+	
+}
+
+button{
+	
+}
