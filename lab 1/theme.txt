@@ -1,0 +1,19 @@
+THEME:
+	Laser cats.
+
+RESOURCE 
+	Cats
+
+GENERATORS 
+	Cat Recruiter
+	CATS Trainer
+	CATS Camp
+
+	Cat Boot Camp with Private Meow
+	Staff Seargnt Snuggles
+	Major Meow
+	
+STORY:
+	Year 2556, you are a Mad Scientist who lives in your Cat finatic Aunts basment  
+	You are bent on world domination, but have nothing but your aunts seemingly endless amount of cats.
+	Where there is a will you say there is away. build your cat army.
