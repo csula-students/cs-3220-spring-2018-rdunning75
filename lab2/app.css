@@ -5,7 +5,7 @@
 }
 
 p {
-	font-family: American Typewriter, serif
+	font-family: American Typewriter, serif;
 }
 
 
@@ -15,17 +15,18 @@ p {
 	border: 1px solid;
 	overflow: auto;
 	background-color: rgba(0,0,0,.7);
-	 color: white;
+	color: white;
 	
 }
 
 .you-flex{
 	display: flex;
 	aline-items: stretch;
-
 }
 
-.you-flex h2 {
+.you-flex #count {
+	font-family: American Typewriter, serif;
+	padding-left: 5px;
 	flex: 1;
 }
 
@@ -57,6 +58,11 @@ p {
 
 .number{
 	padding-left: 10px;
+}
+
+.amount{
+	padding-right: 10px;
+	float: right;
 }
 
 button {
