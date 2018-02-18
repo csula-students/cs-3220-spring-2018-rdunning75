@@ -3,6 +3,12 @@
 .gradle
 /build/
 
+test
+practice
+
+test/
+practice/
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
