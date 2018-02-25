@@ -19,6 +19,7 @@ class PubSub {
 
 //=======================================================================
 
+
 const pubSub = new PubSub();
 
 window.incrementalGame = {
@@ -27,23 +28,20 @@ window.incrementalGame = {
         }
     };
 	
-	var counter = 0;
 	const steal = document.getElementById("you-steal");
 	var div = document.getElementById("count");
 	
 	pubSub.subscribe(incr => {
-		counter++;
+		window.incrementalGame.state.counter ++;
+
 	})
 	
 	steal.addEventListener('click', () => {
-		window.incrementalGame.counter = counter;
-		pubSub.publish(window.incrementalGame.counter);
-		div.textContent = counter;
+		pubSub.publish(window.incrementalGame.state.counter);
+		div.textContent = window.incrementalGame.state.counter;s
 		console.log("is this working?");
-		console.log(counter);
+		console.log(window.state.counter);
 	});
 
-//pubSub.subscribe(data => {
-//    console.log(data);
-//});
+
 
