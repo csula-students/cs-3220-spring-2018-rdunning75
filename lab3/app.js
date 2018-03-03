@@ -38,9 +38,8 @@ window.incrementalGame = {
 	
 	steal.addEventListener('click', () => {
 		pubSub.publish(window.incrementalGame.state.counter);
-		div.textContent = window.incrementalGame.state.counter;s
-		console.log("is this working?");
-		console.log(window.state.counter);
+		div.textContent = window.incrementalGame.state.counter;
+		console.log(window.incrementalGame.state.counter);
 	});
 
 
