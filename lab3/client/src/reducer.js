@@ -5,7 +5,13 @@ export default function reducer (state, action) {
 			state.example = action.payload;
 			return state;
 		case 'BUY_GENERATOR':
-			//state.
+			state.counter = state.counter - action.cost;
+			return state;
+		case 'UPDATE_GENERATOR':
+			state.generators.push(action.generators);
+			return state;
+		case 'UPDATE_COUNTER' :
+			state.counter++;
 			return state;
 		default:
 			return state;
@@ -13,19 +19,19 @@ export default function reducer (state, action) {
 	
 };
 
-function  changeExample() { 
-	store.dispatch({
-		type: 'EXAMPLE_MUTATION',
-		payload : "mutated"
-	});
+//function  changeExample() { 
+//	store.dispatch({
+//		type: 'EXAMPLE_MUTATION',
+//		payload : "mutated"
+//	});
 	
-function buyGenerator() {
-	store.dispatch({
-		type: 'BUY_GENERATOR'
-	});
-}	
-
-} 
+//function buyGenerator() {
+//	store.dispatch({
+//		type: 'BUY_GENERATOR'
+//	});
+////}	
+//
+//} 
 
 
 

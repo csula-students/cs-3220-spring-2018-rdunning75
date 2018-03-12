@@ -6,16 +6,30 @@ export default function (store) {
 			type: 'EXAMPLE_MUTATION',
 			payload : "mutated"
 		});
-		console.log(store.state);
+	}
+
+	
+	function inceraseCount() {
+		store.dispatch({
+			type: 'UPDATE_COUNTER'
+		});
 	}
 	
-	function buyGenerator(){
-		
-	}
+//	window.incrementalGame = {
+//	        state: {
+//	            counter: 0
+//	        }
+//	    };
 	
-	function updateCount {
-		
-	}
+	const steal = document.getElementById("you-steal");
+	var div = document.getElementById("count");
+	
+	
+	steal.addEventListener('click', () => {
+		inceraseCount();
+		div.textContent = store.state.counter;
+		console.log(store.state.counter);
+	});
 	
 	
 	return class GeneratorComponent extends window.HTMLElement {
@@ -25,7 +39,10 @@ export default function (store) {
 		constructor () {
 			super();
 			
-			this.store = store;
+			
+			
+			var id = this.getAttribute("data-id");  
+			var example = store.state.example;
 			
 			
 			//this.onStateChange = this.handleStateChange.bind(this);
@@ -33,11 +50,6 @@ export default function (store) {
 			
 			
 			
-			// Hey Eric! I have no clue if ive done this corret at all, but I am still extremly confused about this whole setup
-			// We have two constructors for different purposes. Im not sure if i implemented the view correctly.
-			
-			var id = this.getAttribute("data-id");  
-			var example = store.state.example;
 			
 			var descriptionArray  = ["Take ten normal cats and combine them into a Recruiter! "
 				+"Can produce 1 CATS for every 15 seconds.", "Take thirty normal cats and combine them into a Trainer! "
@@ -53,7 +65,7 @@ export default function (store) {
 			var description = descriptionArray[id];
 			var totalGen = totalGenArray[id];
 			var cost = costArray[id];
-			
+			var totalAmount = 1;
 			
 			
 			
@@ -67,17 +79,48 @@ export default function (store) {
 					<p class="amount">0</p>
 					<h5>CATS ${name}</h5>
 					<p>${description}</p>
-					<input type="button" value="${cost} Resource" class="recourse"></button>
+					<input type="button" value="${cost} Resource" class="recourse${id}"></button>
 					<p class="number">${totalGen}/Min</p>
 				</div>
 				
 			</form>`;
-			
 			shadowRoot.appendChild(wrapper);
 			
-			shadowRoot.querySelector('input').addEventListener('click', () => {
-				alert('i am working as intendedss!');
+//			shadowRoot.querySelector('input').addEventListener('click', () => {
+//				alert('i am working as intendedss!');
+//			});
+			
+			console.log('recourse'+id);
+			console.log(store.state);
+			
+			var genCount = shadowRoot.querySelector(".amount");
+			
+			shadowRoot.querySelector('.recourse'+id).addEventListener('click', () => {
+				buyGenerator();
+				console.log(store.state);
 			});
+			
+			
+			
+			
+			function buyGenerator() {
+				store.dispatch({
+					type: 'BUY_GENERATOR',
+					cost: cost
+				});
+				div.textContent = store.state.counter;
+				genCount.textContent = (totalAmount++);
+				console.log(store.state.counter);		
+			}
+			
+			function addGenerators() {
+				store.dispatch({
+					type: 'UPDATE_GENERATOR',
+					generators: id
+				});
+			}
+			
+			addGenerators();
 			
 
 		}
