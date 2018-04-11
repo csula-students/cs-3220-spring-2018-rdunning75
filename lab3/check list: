@@ -1,0 +1,15 @@
+check list:
+1. Add forms and styles under index.html [check][check]
+2. BufferQueue in src/models/queue.js
+	i. push method [check]
+	ii. setSize method [check]
+3. GameGraph in src/views/chart.js
+	render method check 
+	Render the bars given default values
+	handleChange method
+	connectedCallback method
+	attributeChangeCallback
+	going back to render method
+		Change render method to take parameters from instance variable like color or style
+4. tick function in src/tick.js
+5. glue everything together in src/app.js

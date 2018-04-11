@@ -1,3 +1,5 @@
+import constants from '../constants';
+import Generator from  '../models/generator';
 export default function (store) {
 	
 	
@@ -49,7 +51,7 @@ export default function (store) {
 			
 			
 			
-			
+			var shadowRoot = this.attachShadow({mode: 'open'});
 			
 			var descriptionArray  = ["Take ten normal cats and combine them into a Recruiter! "
 				+"Can produce 1 CATS for every 15 seconds.", "Take thirty normal cats and combine them into a Trainer! "
@@ -59,17 +61,45 @@ export default function (store) {
 			var totalGenArray = ["4","20","60"];
 			var costArray = ["10","30","75"];
 			
+			const generator = new Generator(store.state.generators[id]);
 			
-			
+			console.log(store.state);
 			var name = nameArray[id];
-			var description = descriptionArray[id];
-			var totalGen = totalGenArray[id];
-			var cost = costArray[id];
-			var totalAmount = 1;
+			
+			var description = store.state.generators[id].description;
+			var totalGen = store.state.generators[id].rate;
+			var cost = generator.getCost();
+			var totalAmount =store.state.generators[id].quantity;
+			var totalAmount2 = store.state.generators[id].quantity;
+			
+//			var generator = {
+//					baseCost: cost, 
+//					description: description, 
+//					name : name, 
+//					quantity: totalAmount2, 
+//					rate:totalGen, type:"autonomous", 
+//					unlockValue: cost,
+//					
+//					getCost () {	
+//						var quant = this.quantity;
+//						var cost = this.baseCost;
+//						var ratio = constants.growthRatio;
+//						var totalCost = cost * Math.pow((1 + ratio), quant);
+//						return Number(totalCost.toFixed(2));
+//					},
+//					
+//					generate () {
+//						// TODO: implement based on doc above
+//						var quant = this.quantity;
+//						var genRate = this.rate;
+//						var totalGen = quant * genRate;
+//						return totalGen;
+//					}
+//			};
 			
 			
 			
-			var shadowRoot = this.attachShadow({mode: 'open'});
+			
 			var wrapper = document.createElement('form');
 			wrapper.innerHTML = ` 
 			<link rel="stylesheet" href="app.css">
@@ -77,19 +107,18 @@ export default function (store) {
 			
 				<div class= "generator">
 					<p class="amount">0</p>
-					<h5>CATS ${name}</h5>
-					<p>${description}</p>
-					<input type="button" value="${cost} Resource" class="recourse${id}"></button>
+					<h5 class="name">CATS ${name}</h5>
+					<p class="description">${description}</p>
+					<input type="button" value="${cost} Resource" id="recourse${id}" class="recourse${id}"></button>
 					<p class="number">${totalGen}/Min</p>
 				</div>
 				
 			</form>`;
 			shadowRoot.appendChild(wrapper);
 			
-//			shadowRoot.querySelector('input').addEventListener('click', () => {
-//				alert('i am working as intendedss!');
-//			});
-			
+		
+			//console.log(name2 + " CHECK ME OUT");
+			console.log(generator)
 			console.log('recourse'+id);
 			console.log(store.state);
 			
@@ -108,6 +137,9 @@ export default function (store) {
 					type: 'BUY_GENERATOR',
 					cost: cost
 				});
+				var oldCost = shadowRoot.getElementById("recourse"+id).value;
+				oldCost = generator.getCost() + "Resource";
+				console.log(generator.getCost());
 				div.textContent = store.state.counter;
 				genCount.textContent = (totalAmount++);
 				console.log(store.state.counter);		
@@ -116,7 +148,7 @@ export default function (store) {
 			function addGenerators() {
 				store.dispatch({
 					type: 'UPDATE_GENERATOR',
-					generators: id
+					generators: generator
 				});
 			}
 			

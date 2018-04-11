@@ -5,9 +5,10 @@ export default function reducer (state, action) {
 			state.example = action.payload;
 			return state;
 		case 'BUY_GENERATOR':
-			state.counter = state.counter - action.cost;
+			state.counter = state.counter - action.cost; 
 			return state;
 		case 'UPDATE_GENERATOR':
+		//	var generator = new Generator(action.generators);
 			state.generators.push(action.generators);
 			return state;
 		case 'UPDATE_COUNTER' :
