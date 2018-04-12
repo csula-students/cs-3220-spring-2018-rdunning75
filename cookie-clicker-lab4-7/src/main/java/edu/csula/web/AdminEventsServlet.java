@@ -26,6 +26,7 @@ public class AdminEventsServlet extends HttpServlet {
 			PrintWriter display = response.getWriter();
 			EventsDAO dao = new EventsDAOImpl(getServletContext());
 			// TODO: render the events page HTMl
+			dao.getAll().size();
 			int id = 0;
 
 
@@ -34,7 +35,7 @@ public class AdminEventsServlet extends HttpServlet {
 
 			System.out.println("id when the page is first loaded (should be zero)" + id);
 
-			String table = "<div id=\\\"table\\\">\n "
+			String table = "<div id=\"table\">\n "
 					+ "<table>" +
 					"		<tr>" +
 					"	<th>Name</th>" +
@@ -44,7 +45,7 @@ public class AdminEventsServlet extends HttpServlet {
 
 
 			// this loop sets the ids on the tables to be pased to do post when you wish to edit a value.
-
+			System.out.println("Size in the get method "+dao.getAll().size());
 			for (Event e : dao.getAll()) {
 
 				table += "<tr>" +
@@ -52,7 +53,11 @@ public class AdminEventsServlet extends HttpServlet {
 						"		<td>" + e.getDescription() + "</td>\n" +
 						"		<td>" + e.getTriggerAt() + "</td>\n" +
 						"		<td>" + e.getId() +"</td>\n" +
-						"		<td>  <a href=\"events?id=" + id + " \" >edit</a>| delete </td>\n" +
+						"		<td>  <a href=\"events?id=" + id + " \"> edit </a> | " +
+						"<form name=\"delete\" method=\"POST\">" +
+						"<input type=\"hidden\" name=\"action\" value =\"delete\">" +
+						"<input type=\"hidden\" name=\"id\" value ="+ id +">" +
+						"<button type=\"submit\" > delete </button> </form> </td>" +
 						"</tr>";
 				id++;
 			}
@@ -97,7 +102,7 @@ public class AdminEventsServlet extends HttpServlet {
 					"	</nav>\n" +
 					"\n" +
 					"\n" +
-					"	<form method=\"POST\" id=\"form\">\n" +
+					"	<form name = \"add\" method=\"POST\" id=\"form\">\n" +
 					"		<div class=\"container\">\n" +
 					"			<div id=\"stuff\">\n" +
 					"				Event Name: <br> <input name=\"eventName\" id=\"eventName\"type=\"text\" placeholder=\"Event Name...\">\n" +
@@ -108,8 +113,8 @@ public class AdminEventsServlet extends HttpServlet {
 					"				Trigger at: <br> <input type=\"text\"placeholder=\"Trigger @ this number...\" name=\"trigger\"> <br>"
 					+ editId +
 					"				<input  type=\"submit\" value=\"Add/Edit\">\n" +
+					"				<input type=\"hidden\" name=\"action\" value=\"add\">" +
 					"			</div>\n" +
-					// adds in the table element from above
 					"\n" + table +
 					"				<br>\n" +
 					"			</div>\n" +
@@ -127,99 +132,65 @@ public class AdminEventsServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO: handle upsert transaction
+		String action = request.getParameter("action");
+		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println(action);
 
 		EventsDAO dao = new EventsDAOImpl(getServletContext());
 		List<Event> events = dao.getAll();
+		System.out.println("Size in the post method before insertion "+events.size());
 		List<Event> change = new ArrayList<Event>();
 
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/events");
-		String name = request.getParameter("eventName");
-		String description = request.getParameter("description");
-		int triggerAt = Integer.parseInt(request.getParameter("trigger"));
-		int id = Integer.parseInt(request.getParameter("id"));
-		System.out.println("id after the submit button is pressed, but before the event is added to the table : " + id);
 
-		//should print out zero first, then one, then two, etc...
+		 if (action.equals("delete")) {
 
-		int i = 0;
-		Event event = new Event(id, name, description, triggerAt);
+			events.remove(id);
+			response.sendRedirect("\\admin\\events");
+			return;
+		} else if(action.equals("add")) {
 
-		//first entry WORKING
-		if (events.size() == 0) {
-			events.add(event);
-			System.out.println("id after the submit button is pressed, and after the event is added to the table when the table is empty: " + id);
-		} else {
-			for (Event e : events) {
-				if (e.getId() == id) {
-					change.add(event);
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/events");
+			String name = request.getParameter("eventName");
+			String description = request.getParameter("description");
+			int triggerAt = Integer.parseInt(request.getParameter("trigger"));
+
+			System.out.println("id after the submit button is pressed, but before the event is added to the table : " + id);
+//			System.out.println(delete);
+
+
+			int i = 0;
+			Event event = new Event(id, name, description, triggerAt);
+
+
+			//first entry WORKING
+			System.out.println("events.size() == 0 :"+ (events.size() == 0));
+			if (events.size() == 0) {
+				events.add(event);
+				System.out.println("id after the submit button is pressed, and after the event is added to the table when the table is empty: " + id);
+			} else {
+				for (Event e : events) {
+					if (e.getId() == id) {
+						change.add(event);
+					}
 				}
-			}
 				if (!change.isEmpty()) {
 					events.set(id, change.get(0));
 					System.out.println("id after the submit button is pressed, and after the event has been changed: " + id);
 					response.sendRedirect("\\admin\\events");
+					System.out.println("Size in the post method after mutation "+events.size());
 					return;
 				} else {
 					events.add(event);
 					System.out.println("id after the submit button is pressed, and after the event is added to the table when the table already has events: " + id);
 
 				}
-		}
-
-
-//		for (Event e : events) {
-//			if (dao.getById(id).get().getId() != e.getId()) {
-//				System.out.println(dao.getById(id).get());
-//				System.out.println("name: " + dao.getById(id).get().getName());
-//				System.out.println("Desc: " + dao.getById(id).get().getDescription());
-//				System.out.println("Id  : " + dao.getById(id).get().getId());
-//				System.out.println("Trig: " + dao.getById(id).get().getTriggerAt());
-//				System.out.println();
-//				events.add(event);
-//			} else {
-//				System.out.println(dao.getById(id).get());
-//				System.out.println("name: " + dao.getById(id).get().getName());
-//				System.out.println("Desc: " + dao.getById(id).get().getDescription());
-//				System.out.println("Id  : " + dao.getById(id).get().getId());
-//				System.out.println("Trig: " + dao.getById(id).get().getTriggerAt());
-//				System.out.println();
-//				events.set(dao.getById(id).get().getId(), event);
-//			}
-//		}
-
-//
-//		for(Event e: events) {
-//			if (e.getId() != id) {
-//				events.add(new Event(id,name,description,triggerAt));
-//			} else {
-//				e.equals(new Event(id,name,description,triggerAt));
-//			}
-//		}
-
-
-//			} else if (iterator.next().getId()  == id){
-//				iterator.next().equals(new Event(id,name,description,triggerAt));
-//				System.out.println("WORKING 3 :");
-//				System.out.println(id);
-//				System.out.println(i);
-//				iterator.remove();
-//			} else {
-//				iterator.remove();
-//				break;
-//			}
-//			
-//		}	
-
-
-//		for(Event e : events ) {
-//			System.out.println ("Name: "+e.getName());
-//		}
-//	int newid = Integer.parseInt((String) request.getAttribute("id"));
-//	request.setAttribute("id", newid+1);;
+			}
 			System.out.println();
-			request.setAttribute("id",id++);
-			doGet(request, response);
-
+			request.setAttribute("id", id++);
+			response.sendRedirect("\\admin\\events");
+			return;
+		}
+		doGet(request, response);
 		}
 	}
 
@@ -227,15 +198,4 @@ public class AdminEventsServlet extends HttpServlet {
 	
 	
 	
-//	public void doDelete(HttpServletRequest request, HttpServletResponse response){
-//		Collection<Event> deleteArray = new ArrayList<Event>();
-//		int id = Integer.parseInt(request.getParameter("id"));
-//			for(Event e: events) {
-//				if(e.getId() == id) {
-//					deleteArray.add(e);
-//				}
-//			}
-//		events.removeAll(deleteArray);
-//
-//	}
-//}
+
