@@ -61,6 +61,7 @@ public class AdminEventsServlet extends HttpServlet {
 						"</tr>";
 				id++;
 			}
+			table += "</table>\n </div>";
 			System.out.println("id after the table has been created" + id);
 
 		if(request.getAttribute("id") != null){
@@ -70,7 +71,7 @@ public class AdminEventsServlet extends HttpServlet {
 
 
 
-		table += "</table>\n </div>";
+
 
 			if (request.getParameter("id") != null) {
 				editId = "<input type=\"hidden\" name=\"id\" value = " + (request.getParameter("id"))+1 + " >";
@@ -87,12 +88,12 @@ public class AdminEventsServlet extends HttpServlet {
 					"<html>\n" +
 					"<head>\n" +
 					"<meta charset=\"UTF-8\">\n" +
-					"<title>IncraMetal-game</title>\n" +
+					"<title>Katts-game</title>\n" +
 					"<link rel=\"stylesheet\" href=\"\\css\\basic.css\"> \n" +
 					"</head>\n" +
 					"<body>\n" +
 					"	<div id=\"title\">\n" +
-					"		<h1>IncraMetal Game Framework</h1>\n" +
+					"		<h1>IncraKatts Game Framework</h1>\n" +
 					"	</div>\n" +
 					"\n" +
 					"	<nav>\n" +
@@ -102,8 +103,8 @@ public class AdminEventsServlet extends HttpServlet {
 					"	</nav>\n" +
 					"\n" +
 					"\n" +
+					"	<div class=\"container\">\n" +
 					"	<form name = \"add\" method=\"POST\" id=\"form\">\n" +
-					"		<div class=\"container\">\n" +
 					"			<div id=\"stuff\">\n" +
 					"				Event Name: <br> <input name=\"eventName\" id=\"eventName\"type=\"text\" placeholder=\"Event Name...\">\n" +
 					"				<br> \n" +
@@ -111,15 +112,16 @@ public class AdminEventsServlet extends HttpServlet {
 					"				<textarea name=\"description\" id =\"description\" rows=\"5\" cols=\"30\"> Insert description here </textarea> <br>\n" +
 					"\n" +
 					"				Trigger at: <br> <input type=\"text\"placeholder=\"Trigger @ this number...\" name=\"trigger\"> <br>"
-					+ editId +
+									+ editId +
 					"				<input  type=\"submit\" value=\"Add/Edit\">\n" +
 					"				<input type=\"hidden\" name=\"action\" value=\"add\">" +
 					"			</div>\n" +
-					"\n" + table +
+					"	</form>\n" +
+								"\n" + table +
 					"				<br>\n" +
 					"			</div>\n" +
 					"		</div>\n" +
-					"	</form>\n" +
+
 					"\n" +
 					"</body>\n" +
 					"</html>");
@@ -143,12 +145,10 @@ public class AdminEventsServlet extends HttpServlet {
 
 
 		 if (action.equals("delete")) {
-
 			events.remove(id);
 			response.sendRedirect("\\admin\\events");
 			return;
 		} else if(action.equals("add")) {
-
 			RequestDispatcher rd = request.getRequestDispatcher("/admin/events");
 			String name = request.getParameter("eventName");
 			String description = request.getParameter("description");
@@ -188,7 +188,7 @@ public class AdminEventsServlet extends HttpServlet {
 			System.out.println();
 			request.setAttribute("id", id++);
 			response.sendRedirect("\\admin\\events");
-			return;
+ 			return;
 		}
 		doGet(request, response);
 		}
