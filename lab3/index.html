@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lazer CATS</title>
+
+
+
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+	<component-example> </component-example>
+	
+
+	
+	<h1 class="title">The Lazer CATS Lab</h1>
+	<div class="scroll-box"> <p>*Year 2556, you are a Mad Scientist who
+		lives in your Cat fanatic Aunts basement. <br> *You are bent on world
+		domination, but have nothing but your aunts seemingly endless supply
+		of cats. <br> *"Where there is a will" you say "there is away". <br> * Build your
+		cat army.<br><br><br><br> <p></div>
+
+	<div class="you-flex">
+		<h2 class="space">Current CATS count: </h2>
+		<h2 id="count">0</h2>
+		<button id="you-steal">Steal a Cat</button>
+	</div>
+
+	<div class="generator-flex">
+			
+			<game-generator data-id="0"></game-generator>
+<!-- 		<form>
+			<div class="generator">
+				<p class="amount">0</p>
+				<h5>CATS Recruiter</h5>
+				<p>Take ten normal cats and combine them into a Recruiter!
+				   Can produce 1 CATS for every 15 seconds.</p>
+				<button class="recourse">10 Resource</button>
+				<p class="number">4/perMin</p>
+			</div>
+		</form> -->
+			<game-generator data-id="1"></game-generator>
+<!-- 		<form>
+			<div class="generator">
+				<p class="amount">0</p>
+				<h5>CATS Trainer</h5>
+				<p>Take thirty normal cats and combine them into a Trainer! 
+				   Produces 5 CATS for every 15 seconds. </p>
+				<button class="recourse" >30 Resource</button>
+				<p class="number">20/perMin</p>
+			</div>
+		</form> -->
+
+			<game-generator data-id="2"></game-generator>
+<!-- 	<form>
+			<div class="generator">
+				<p class="amount">0</p>
+				<h5>CATS Camp</h5>
+				<p>Take 75 cats and hire them to run a boot camp. What could go wrong?
+				   Produces 15 CATS for every 15 seconds</p>
+				<button class="recourse">75 Resource</button>
+				<p class="number">60/perMin</p>
+			</div>
+		</form> -->
+
+
+	</div>
+
+<script src="app.js"></script>
+<script src="dest/app.bundle.js"></script>
+
+</body>
+</html>
