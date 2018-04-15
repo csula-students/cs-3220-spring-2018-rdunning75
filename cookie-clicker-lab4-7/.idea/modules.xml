@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cookie-clicker.iml" filepath="$PROJECT_DIR$/.idea/modules/cookie-clicker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cookie-clicker_main.iml" filepath="$PROJECT_DIR$/.idea/modules/cookie-clicker_main.iml" group="cookie-clicker" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cookie-clicker_test.iml" filepath="$PROJECT_DIR$/.idea/modules/cookie-clicker_test.iml" group="cookie-clicker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cookie-clicker-lab4-7.iml" filepath="$PROJECT_DIR$/.idea/modules/cookie-clicker-lab4-7.iml" />
     </modules>
   </component>
 </project>
