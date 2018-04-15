@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+
+.container{
+	display: flex;
+}
+
+
+
+button {
+	background:none!important;
+	border:none;
+	padding:0!important;
+	font-size: 16px;
+	/*optional*/
+	font-family:Times; /*input has OS specific font-family*/
+	color:#069;
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+.container-inner{
+	display: flex;
+	flex-direction: column;
+}
+
+ #table {
+	 border-collapse: collapse;
+	 padding-left: 5em;
+	 /*border-style: double;*/
+	 /*border: 1px;*/
+
+}
+
+#stuff{
+	
+}
+
+#description{
+	width: 300px;
+	
+}
+
+#title{
+	font-family: "Courier New", Courier, monospace;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+div#stuff{
+	padding: 1em;
+	
+	
+}
+

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,35 +70,53 @@
 "use strict";
 
 
-__webpack_require__(1);
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	growthRatio: 0.05,
+	actions: {
+		EXAMPLE: 'EXAMPLE_MUTATION',
+		BUY_GENERATOR: 'BUY_GENERATOR'
+	}
+};
 
-var _game = __webpack_require__(4);
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
 
-var _store = __webpack_require__(5);
+"use strict";
+
+
+__webpack_require__(2);
+
+var _game = __webpack_require__(5);
+
+var _store = __webpack_require__(6);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _reducer = __webpack_require__(6);
+var _reducer = __webpack_require__(7);
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
-var _button = __webpack_require__(7);
+var _button = __webpack_require__(8);
 
 var _button2 = _interopRequireDefault(_button);
 
-var _counter = __webpack_require__(8);
+var _counter = __webpack_require__(9);
 
 var _counter2 = _interopRequireDefault(_counter);
 
-var _example = __webpack_require__(9);
+var _example = __webpack_require__(10);
 
 var _example2 = _interopRequireDefault(_example);
 
-var _generator = __webpack_require__(10);
+var _generator = __webpack_require__(11);
 
 var _generator2 = _interopRequireDefault(_generator);
 
-var _storyBook = __webpack_require__(11);
+var _storyBook = __webpack_require__(13);
 
 var _storyBook2 = _interopRequireDefault(_storyBook);
 
@@ -165,13 +183,38 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 main();
 
+//baseCost: cost, 
+//description: description, 
+//name : name, 
+//quantity: totalAmount2, 
+//rate:totalGen, type:"autonomous", 
+//unlockValue: cost,
+
 // main function wraps everything at top level
 function main() {
 	// TODO: fill the blank based on the theme you have choosen
 	const initialState = {
 		example: 'Hello custom element',
 		counter: 0,
-		generators: [],
+		generators: [{ baseCost: 10,
+			description: "Take ten normal cats and combine them into a Recruiter! Can produce 1 CATS for every 15 seconds.",
+			name: "Recrutier",
+			quantity: 0,
+			rate: 4,
+			type: "autonomous",
+			unclockValue: 10 }, { baseCost: 30,
+			description: "Take thirty normal cats and combine them into a Trainer! Produces 5 CATS for every 15 seconds.",
+			name: "Trainer",
+			quantity: 0,
+			rate: 20,
+			type: "autonomous",
+			unclockValue: 30 }, { baseCost: 75,
+			description: "Take 75 cats and hire them to run a boot camp. What could go wrong? Produces 15 CATS for every 15 seconds",
+			name: "Camp",
+			quantity: 0,
+			rate: 60,
+			type: "autonomous",
+			unclockValue: 75 }],
 		story: []
 	};
 
@@ -198,7 +241,7 @@ function main() {
 }
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function(){/*
@@ -399,10 +442,10 @@ Eg.whenReady(function(){requestAnimationFrame(function(){window.WebComponents.re
 
 //# sourceMappingURL=webcomponents-lite.js.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(4)))
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
 var g;
@@ -429,7 +472,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -619,7 +662,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -653,7 +696,7 @@ function increment(state, modifier = 1) {
 }
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -724,7 +767,7 @@ function deepCopy(obj) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -735,17 +778,42 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = reducer;
 function reducer(state, action) {
+
 	switch (action.type) {
 		case 'EXAMPLE_MUTATION':
 			state.example = action.payload;
 			return state;
+		case 'BUY_GENERATOR':
+			state.counter = state.counter - action.cost;
+			return state;
+		case 'UPDATE_GENERATOR':
+			//	var generator = new Generator(action.generators);
+			state.generators.push(action.generators);
+			return state;
+		case 'UPDATE_COUNTER':
+			state.counter++;
+			return state;
 		default:
 			return state;
 	}
-}
+};
+
+//function  changeExample() { 
+//	store.dispatch({
+//		type: 'EXAMPLE_MUTATION',
+//		payload : "mutated"
+//	});
+
+//function buyGenerator() {
+//	store.dispatch({
+//		type: 'BUY_GENERATOR'
+//	});
+////}	
+//
+//}
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -770,7 +838,7 @@ exports.default = function (store) {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -806,7 +874,7 @@ exports.default = function (store) {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -854,7 +922,7 @@ exports.default = function (store) {
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -865,6 +933,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (store) {
+
+	function changeExample() {
+		store.dispatch({
+			type: 'EXAMPLE_MUTATION',
+			payload: "mutated"
+		});
+	}
+
+	function inceraseCount() {
+		store.dispatch({
+			type: 'UPDATE_COUNTER'
+		});
+	}
+
+	//	window.incrementalGame = {
+	//	        state: {
+	//	            counter: 0
+	//	        }
+	//	    };
+
+	const steal = document.getElementById("you-steal");
+	var div = document.getElementById("count");
+
+	steal.addEventListener('click', () => {
+		inceraseCount();
+		div.textContent = store.state.counter;
+		console.log(store.state.counter);
+	});
+
 	return class GeneratorComponent extends window.HTMLElement {
 
 		static get observedAttributes() {
@@ -874,43 +971,105 @@ exports.default = function (store) {
 		constructor() {
 			super();
 
-			// Hey Eric! I have no clue if ive done this corret at all, but I am still extremly confused about this whole setup
-			// We have two constructors for different purposes. Im not sure if i implemented the view correctly.
-
 			var id = this.getAttribute("data-id");
-			var descriptionArray = ["Take ten normal cats and combine them into a Recruiter! " + "Can produce 1 CATS for every 15 seconds.", "Take thirty normal cats and combine them into a Trainer! " + " Produces 5 CATS for every 15 seconds.", "Take 75 cats and hire them to run a boot camp. What could go wrong?" + "  Produces 15 CATS for every 15 seconds"];
+			var example = store.state.example;
+
+			//this.onStateChange = this.handleStateChange.bind(this);
+
+
+			var shadowRoot = this.attachShadow({ mode: 'open' });
+
+			var descriptionArray = ["Take ten normal cats and combine them into a Recruiter! " + "Can produce 1 CATS for every 15 seconds.", "Take thirty normal cats and combine them into a Trainer! " + " Produces 5 CATS for every 15 seconds.", "Take 75 cats and hire them to run a boot camp. What could go wrong?" + " Produces 15 CATS for every 15 seconds"];
 			var nameArray = ["Recrutier", "Trainer", "Camp"];
 			var totalGenArray = ["4", "20", "60"];
 			var costArray = ["10", "30", "75"];
 
+			const generator = new _generator2.default(store.state.generators[id]);
+
+			console.log(store.state);
 			var name = nameArray[id];
-			var description = descriptionArray[id];
-			var totalGen = totalGenArray[id];
-			var cost = costArray[id];
 
-			console.log();
+			var description = store.state.generators[id].description;
+			var totalGen = store.state.generators[id].rate;
+			var cost = generator.getCost();
+			var totalAmount = store.state.generators[id].quantity;
+			var totalAmount2 = store.state.generators[id].quantity;
 
-			var shadowRoot = this.attachShadow({ mode: 'open' });
+			//			var generator = {
+			//					baseCost: cost, 
+			//					description: description, 
+			//					name : name, 
+			//					quantity: totalAmount2, 
+			//					rate:totalGen, type:"autonomous", 
+			//					unlockValue: cost,
+			//					
+			//					getCost () {	
+			//						var quant = this.quantity;
+			//						var cost = this.baseCost;
+			//						var ratio = constants.growthRatio;
+			//						var totalCost = cost * Math.pow((1 + ratio), quant);
+			//						return Number(totalCost.toFixed(2));
+			//					},
+			//					
+			//					generate () {
+			//						// TODO: implement based on doc above
+			//						var quant = this.quantity;
+			//						var genRate = this.rate;
+			//						var totalGen = quant * genRate;
+			//						return totalGen;
+			//					}
+			//			};
+
+
 			var wrapper = document.createElement('form');
 			wrapper.innerHTML = ` 
 			<link rel="stylesheet" href="app.css">
-			
 			<form>
 			
-					<div class= "generator">
+				<div class= "generator">
 					<p class="amount">0</p>
-					<h5>CATS ${name}</h5>
-					<p>${description}</p>
-					<input type="button" value="${cost} Resource" class="recourse"></button>
+					<h5 class="name">CATS ${name}</h5>
+					<p class="description">${description}</p>
+					<input type="button" value="${cost} Resource" id="recourse${id}" class="recourse${id}"></button>
 					<p class="number">${totalGen}/Min</p>
 				</div>
+				
 			</form>`;
-
 			shadowRoot.appendChild(wrapper);
 
-			shadowRoot.querySelector('input').addEventListener('click', () => {
-				alert('i am working as intendedss!');
+			//console.log(name2 + " CHECK ME OUT");
+			console.log(generator);
+			console.log('recourse' + id);
+			console.log(store.state);
+
+			var genCount = shadowRoot.querySelector(".amount");
+
+			shadowRoot.querySelector('.recourse' + id).addEventListener('click', () => {
+				buyGenerator();
+				console.log(store.state);
 			});
+
+			function buyGenerator() {
+				store.dispatch({
+					type: 'BUY_GENERATOR',
+					cost: cost
+				});
+				var oldCost = shadowRoot.getElementById("recourse" + id).value;
+				oldCost = generator.getCost() + "Resource";
+				console.log(generator.getCost());
+				div.textContent = store.state.counter;
+				genCount.textContent = totalAmount++;
+				console.log(store.state.counter);
+			}
+
+			function addGenerators() {
+				store.dispatch({
+					type: 'UPDATE_GENERATOR',
+					generators: generator
+				});
+			}
+
+			addGenerators();
 		}
 
 		get id() {
@@ -939,21 +1098,100 @@ exports.default = function (store) {
 
 		// TODO: subscribe to store on change event
 
-		// TODO: add click event
-
-		//	static get observedAtrributes
 
 		attributeChangedCallback(name, OldValue, NewValue) {}
-		// TODO: render generator initial view
-		connectedCallback() {}
+
+		connectedCallback() {
+			store.subscribe(state => {
+				console.log("im subscribed");
+			});
+		}
 
 		disconnectedCallback() {}
 	};
+
 	window.customElements.define('game-generator', GeneratorComponent);
 };
 
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+var _generator = __webpack_require__(12);
+
+var _generator2 = _interopRequireDefault(_generator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /***/ }),
-/* 11 */
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Generator {
+	/**
+  * Create a new generator based on the meta object passing in
+  * @constructor
+  * @param {object} meta - meta object for constructing generator
+  */
+
+	constructor(meta) {
+		this.type = meta.type;
+		this.name = meta.name;
+		this.description = meta.description;
+		this.rate = meta.rate;
+		this.quantity = meta.quantity;
+		this.baseCost = meta.baseCost;
+		this.unlockValue = meta.unlockValue;
+	}
+
+	/**
+  * getCost computes cost exponentially based on quantity (as formula below)
+  * xt = x0(1 + r)^t
+  * which 
+  * xt is the value of x with t quantity
+  * x0 is base value
+  * r is growth ratio (see constants.growthRatio)
+  * t is the quantity
+  * @return {number} the cost of buying another generator
+  */
+	getCost() {
+		var quant = this.quantity;
+		var cost = this.baseCost;
+		var ratio = _constants2.default.growthRatio;
+		var totalCost = cost * Math.pow(1 + ratio, quant);
+		return Number(totalCost.toFixed(2));
+	}
+
+	/**
+  * generate computes how much this type of generator generates -
+  * rate * quantity
+  * @return {number} how much this generator generates
+  */
+	generate() {
+		// TODO: implement based on doc above
+		var quant = this.quantity;
+		var genRate = this.rate;
+		var totalGen = quant * genRate;
+		return totalGen;
+	}
+}
+exports.default = Generator;
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
