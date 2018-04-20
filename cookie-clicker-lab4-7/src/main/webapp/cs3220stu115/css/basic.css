@@ -5,6 +5,22 @@
 	display: flex;
 }
 
+.login{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -150px;
+}
+
+.login-item{
+	width: 300px;
+	padding-bottom: 50px;
+
+}
+
 
 
 button {
@@ -51,7 +67,7 @@ tr:nth-child(even) {
 
 div#stuff{
 	padding: 1em;
-	
-	
 }
+
+
 

@@ -16,6 +16,8 @@ public class AdminGeneratorsServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		// TODO: render the generators page HTML
 		out.println("<h1>Hello generators servlet!</h1>");
+
+		request.getRequestDispatcher("/WEB-INF/admin-generators.jsp").forward(request,response);
 	}
 
 

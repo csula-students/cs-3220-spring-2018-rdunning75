@@ -1,5 +1,7 @@
 package edu.csula.web;
 
+import edu.csula.storage.servlet.UsersDAOImpl;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
@@ -17,12 +19,21 @@ public class AuthenticationServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		// TODO: render the authentication page HTML
-		out.println("<h1>Hello login servlet!</h1>");
+		request.getRequestDispatcher("/WEB-INF/admin-signin.jsp").forward(request,response);
 	}
 
 	@Override
 	public void doPost( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO: handle login
+		UsersDAOImpl usersDAO = new UsersDAOImpl(request.getSession());
+		String password = request.getParameter("password");
+		String username = request.getParameter("username");
+		if(usersDAO.authenticate(username,password)){
+			request.getRequestDispatcher("/WEB-INF/admin-generators.jsp").forward(request,response);
+			return;
+		} else {
+			doGet(request,response);
+		}
 	}
 
     @Override

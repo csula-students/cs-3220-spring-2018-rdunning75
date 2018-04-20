@@ -26,8 +26,17 @@ public class UsersDAOImpl implements UsersDAO {
 		// TODO: check if username/password combination is valid and store the username/password into the session
         ArrayList<User> users = new ArrayList<User>();
         users.add(new User(0,"admin","cs3220password"));
+        System.out.println("username checking: "+ username);
+        System.out.println("password checking: "+ password);
         for(User u : users){
-            if(u.getUsername() == username && u.getPassword() == password){
+
+            System.out.println("username in array: " + u.getUsername());
+            System.out.println("pasword in array: " + u.getPassword());
+            System.out.println(u.getUsername().equals(username) && u.getPassword().equals(password));
+            System.out.println(u.getUsername().equals(username));
+            System.out.println(u.getPassword().equals(password));
+
+            if(u.getUsername().equals(username)  && u.getPassword().equals(password)){
                 context.setAttribute(CONTEXT_NAME,u);
                 return true;
             }
