@@ -25,6 +25,10 @@
     <a href="admin-info.html">Game Information</a> |
     <a href="/admin/generators">Generators</a> |
     <a href="/admin/events">Events</a>
+    <form action="/admin/auth" method="get">
+        <button type="submit">Log Out</button>
+        <input type="hidden" value="delete" name="logout">
+    </form>
 </nav>
 
 

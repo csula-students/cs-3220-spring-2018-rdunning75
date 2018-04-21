@@ -30,12 +30,6 @@ public class UsersDAOImpl implements UsersDAO {
         System.out.println("password checking: "+ password);
         for(User u : users){
 
-            System.out.println("username in array: " + u.getUsername());
-            System.out.println("pasword in array: " + u.getPassword());
-            System.out.println(u.getUsername().equals(username) && u.getPassword().equals(password));
-            System.out.println(u.getUsername().equals(username));
-            System.out.println(u.getPassword().equals(password));
-
             if(u.getUsername().equals(username)  && u.getPassword().equals(password)){
                 context.setAttribute(CONTEXT_NAME,u);
                 return true;
@@ -61,7 +55,7 @@ public class UsersDAOImpl implements UsersDAO {
 	public void logout() {
 		// TOOD: log user out using `invalidate`
         context.invalidate();
-        System.out.println(context.getAttribute(CONTEXT_NAME));
+        //System.out.println(context.getAttribute(CONTEXT_NAME));
 
 	}
 }

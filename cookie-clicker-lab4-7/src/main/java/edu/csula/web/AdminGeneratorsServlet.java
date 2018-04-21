@@ -2,7 +2,11 @@ package edu.csula.web;
 
 import edu.csula.models.Generator;
 import edu.csula.storage.GeneratorsDAO;
+import edu.csula.storage.UsersDAO;
 import edu.csula.storage.servlet.GeneratorsDAOImpl;
+import edu.csula.storage.servlet.UsersDAOImpl;
+
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 @WebServlet("/admin/generators")
@@ -20,7 +25,13 @@ public class AdminGeneratorsServlet extends HttpServlet {
 	@Override
 	public void doGet( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		//PrintWriter out = response.getWriter();
+
+		UsersDAO users = new UsersDAOImpl(request.getSession());
+		if(users.getAuthenticatedUser().equals(Optional.empty())){
+			response.sendRedirect("/admin/auth");
+			return;
+		}
+
 		GeneratorsDAO dao = new GeneratorsDAOImpl(getServletContext());
 		List<Generator> generators = dao.getAll();
 		int startId = 0;

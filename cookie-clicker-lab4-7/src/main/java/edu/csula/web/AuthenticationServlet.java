@@ -17,9 +17,15 @@ public class AuthenticationServlet extends HttpServlet {
 	@Override
 	public void doGet( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
 		// TODO: render the authentication page HTML
-		request.getRequestDispatcher("/WEB-INF/admin-signin.jsp").forward(request,response);
+
+		if(request.getParameter("logout") != null){
+			doDelete(request,response);
+			request.getRequestDispatcher("/WEB-INF/admin-signin.jsp").forward(request,response);
+		} else {
+			request.getRequestDispatcher("/WEB-INF/admin-signin.jsp").forward(request,response);
+		}
+
 	}
 
 	@Override
@@ -40,5 +46,7 @@ public class AuthenticationServlet extends HttpServlet {
     @Override
     public void doDelete( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO: handle logout
-    }
+		UsersDAOImpl usersDAO = new UsersDAOImpl(request.getSession());
+		usersDAO.logout();
+	}
 }

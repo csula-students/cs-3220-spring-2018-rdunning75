@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.csula.storage.UsersDAO;
 import edu.csula.storage.servlet.EventsDAOImpl;
 import edu.csula.storage.EventsDAO;
 import edu.csula.models.Event;
+import edu.csula.storage.servlet.UsersDAOImpl;
 
 @WebServlet("/admin/events")
 public class AdminEventsServlet extends HttpServlet {
@@ -24,6 +26,13 @@ public class AdminEventsServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			response.setContentType("text/html");
 			PrintWriter display = response.getWriter();
+
+		UsersDAO users = new UsersDAOImpl(request.getSession());
+		if(users.getAuthenticatedUser().equals(Optional.empty())){
+			response.sendRedirect("/admin/auth");
+			return;
+		}
+
 			EventsDAO dao = new EventsDAOImpl(getServletContext());
 			List<Event> events = dao.getAll();
 			int startId = 0;

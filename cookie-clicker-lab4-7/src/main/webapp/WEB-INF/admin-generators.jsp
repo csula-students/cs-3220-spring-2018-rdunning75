@@ -7,6 +7,7 @@
 --%>
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,10 @@
     <a href="admin-info.html">Game Information</a> |
     <a href="/admin/generators">Generators</a> |
     <a href="/admin/events">Events</a>
+    <form action="/admin/auth" method="get">
+        <button type="submit">Log Out</button>
+        <input type="hidden" value="delete" name="logout">
+    </form>
 </nav>
 
 
@@ -35,7 +40,7 @@
             <br>
             Base cost <br> <input name="generatorCost" id="generatorCost" type="text" placeholder="i.e. 5, 20, 40...">
             <br>
-            Unclock at <br> <input name="unlockAt" id="unlockAt" type="text" placeholder="i.e. 5, 20, 40...">
+            Unlock at <br> <input name="unlockAt" id="unlockAt" type="text" placeholder="i.e. 5, 20, 40...">
             <br>
             Generator Description <br> <textarea name="description" id ="description" rows="5" cols="30"> Insert description here </textarea>
             <br>
