@@ -29,7 +29,8 @@ public class AuthenticationServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String username = request.getParameter("username");
 		if(usersDAO.authenticate(username,password)){
-			request.getRequestDispatcher("/WEB-INF/admin-generators.jsp").forward(request,response);
+			response.sendRedirect("/admin/generators");
+		//	request.getRequestDispatcher("/admin/generators").forward(request,response);
 			return;
 		} else {
 			doGet(request,response);

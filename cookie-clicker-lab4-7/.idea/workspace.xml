@@ -7,14 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="737672d1-6e2b-4106-a382-2def9b45fbd4" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-signin.jsp" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/cookie-clicker_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/cookie-clicker_main.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/UsersDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/UsersDAOImpl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/csula/web/AdminGeneratorsServlet.java" afterPath="$PROJECT_DIR$/src/main/java/edu/csula/web/AdminGeneratorsServlet.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/csula/web/AuthenticationServlet.java" afterPath="$PROJECT_DIR$/src/main/java/edu/csula/web/AuthenticationServlet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cs3220stu115/css/basic.css" afterPath="$PROJECT_DIR$/src/main/webapp/cs3220stu115/css/basic.css" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-events.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-events.jsp" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -76,52 +74,82 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="admin-generators.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin-events.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-events.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticationServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/web/AuthenticationServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UsersDAOImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/UsersDAOImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="42" column="9" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-              <folding>
-                <element signature="e#779#785#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.39137134">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="AdminEventsServlet.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/web/AdminEventsServlet.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="200">
+                  <caret line="27" column="46" lean-forward="true" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+                  <folding>
+                    <element signature="e#1119#1155#0" expanded="false" />
+                    <marker date="1524183307769" expanded="false" signature="4753:4754" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="admin-events.jsp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-events.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="71">
+                  <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="admin-generators.jsp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Generator.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/models/Generator.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="433">
+                  <caret line="54" column="26" lean-forward="false" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="26" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AdminGeneratorsServlet.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/web/AdminGeneratorsServlet.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="383">
+                  <caret line="60" column="35" lean-forward="true" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1635#1646#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="GeneratorsDAOImpl.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/GeneratorsDAOImpl.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="905">
+                  <caret line="73" column="25" lean-forward="false" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -726,11 +754,12 @@
         <option value="$PROJECT_DIR$/src/test/java/edu/csula/storage/servlet/UsersDAOImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/EventsDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/GeneratorsDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/csula/web/AdminGeneratorsServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/cs3220stu115/css/basic.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-signin.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/UsersDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/csula/web/AuthenticationServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/csula/web/AdminGeneratorsServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-events.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp" />
       </list>
     </option>
@@ -899,6 +928,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="edu" type="462c0819:PsiDirectoryNode" />
               <item name="csula" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cookie-clicker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cookie-clicker-lab4-7" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="edu" type="462c0819:PsiDirectoryNode" />
+              <item name="csula" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cookie-clicker" type="b2602c69:ProjectViewProjectNode" />
@@ -1241,7 +1280,7 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
     </configuration>
-    <configuration name="tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.28" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.28" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -1354,7 +1393,7 @@
       <workItem from="1523394059355" duration="120000" />
       <workItem from="1523394270643" duration="14536000" />
       <workItem from="1524185208592" duration="2759000" />
-      <workItem from="1524198451476" duration="13675000" />
+      <workItem from="1524198451476" duration="17641000" />
     </task>
     <servers />
   </component>
@@ -1391,7 +1430,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55656000" />
+    <option name="totallyTimeSpent" value="59622000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1618,14 +1657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/models/Generator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="68" column="45" lean-forward="false" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/classes/java/main/edu/csula/storage/GeneratorsDAO.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1735,50 +1766,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/GeneratorsDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1016">
-          <caret line="73" column="25" lean-forward="false" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/cs3220stu115/css/basic.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/web/AdminGeneratorsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="11" column="42" lean-forward="false" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/web/AdminEventsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-          <folding>
-            <element signature="e#1119#1155#0" expanded="false" />
-            <marker date="1524183307769" expanded="false" signature="4753:4754" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/UsersDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="42" column="9" lean-forward="true" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-          <folding>
-            <element signature="e#779#785#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1792,26 +1784,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/web/AuthenticationServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="93">
+          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/UsersDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+          <folding>
+            <element signature="e#779#785#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/storage/servlet/GeneratorsDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="905">
+          <caret line="73" column="25" lean-forward="false" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/models/Generator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="54" column="26" lean-forward="false" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/web/AdminGeneratorsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="60" column="35" lean-forward="true" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1635#1646#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/csula/web/AdminEventsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="27" column="46" lean-forward="true" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+          <folding>
+            <element signature="e#1119#1155#0" expanded="false" />
+            <marker date="1524183307769" expanded="false" signature="4753:4754" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-events.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        <state relative-caret-position="71">
+          <caret line="25" column="30" lean-forward="false" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1874,12 +1914,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>cookie-clicker</last-edited>
+          <last-edited>cookie-clicker_main|cookie-clicker</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1899,7 +1938,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Gradle: junit:junit:4.12</last-edited>
+          <last-edited>javax.servlet:jstl:1.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -23,8 +23,8 @@
 
 <nav>
     <a href="admin-info.html">Game Information</a> |
-    <a href="admin-generators.html">Generators</a> |
-    <a href="admin-events.html">Events</a>
+    <a href="/admin/generators">Generators</a> |
+    <a href="/admin/events">Events</a>
 </nav>
 
 
@@ -36,8 +36,12 @@
             Event Description <br>
             <textarea name="description" id ="description" rows="5" cols="30"> Insert description here </textarea> <br>
 
-            Trigger at: <br> <input type="text"placeholder="Trigger @ this number..." name="trigger"> <br><input type="hidden" name="id" value = ${id} >				<input  type="submit" value="Add/Edit">
-            <input type="hidden" name="action" value="add">			</div>
+            Trigger at: <br> <input type="text"placeholder="Trigger @ this number..." name="trigger"> <br>
+            <input type="hidden" name="id" value = ${id} >
+            <input type="hidden" name="action" value="add">
+            <input  type="submit" value="Add/Edit">
+
+        </div>
     </form>
 
     <div id="table">
