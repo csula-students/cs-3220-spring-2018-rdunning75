@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,49 +70,31 @@
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.default = {
-	growthRatio: 0.05,
-	actions: {
-		EXAMPLE: 'EXAMPLE_MUTATION',
-		BUY_GENERATOR: 'BUY_GENERATOR'
-	}
-};
+__webpack_require__(1);
 
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+var _game = __webpack_require__(4);
 
-"use strict";
-
-
-__webpack_require__(2);
-
-var _game = __webpack_require__(5);
-
-var _store = __webpack_require__(6);
+var _store = __webpack_require__(5);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _reducer = __webpack_require__(7);
+var _reducer = __webpack_require__(6);
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
-var _button = __webpack_require__(8);
+var _button = __webpack_require__(7);
 
 var _button2 = _interopRequireDefault(_button);
 
-var _counter = __webpack_require__(9);
+var _counter = __webpack_require__(8);
 
 var _counter2 = _interopRequireDefault(_counter);
 
-var _example = __webpack_require__(10);
+var _example = __webpack_require__(9);
 
 var _example2 = _interopRequireDefault(_example);
 
-var _generator = __webpack_require__(11);
+var _generator = __webpack_require__(10);
 
 var _generator2 = _interopRequireDefault(_generator);
 
@@ -241,7 +223,7 @@ function main() {
 }
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function(){/*
@@ -442,10 +424,10 @@ Eg.whenReady(function(){requestAnimationFrame(function(){window.WebComponents.re
 
 //# sourceMappingURL=webcomponents-lite.js.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(3)))
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports) {
 
 var g;
@@ -472,7 +454,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -662,17 +644,16 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 exports.loop = loop;
-exports.increment = increment;
 // default interval as 1 second
 const interval = 1000;
 
@@ -681,22 +662,22 @@ const interval = 1000;
  * based on the interval variable configuration)
  */
 function loop(store) {
-	// TODO: increment counter based on the generators in the state
-	// hint: read how many "generators" in store and iterate through them to
-	//       count how many value to increment to "resource"
+    // TODO: increment counter based on the generators in the state
+    // hint: read how many "generators" in store and iterate through them to
+    //       count how many value to increment to "resource"
+    // hint: remember to change event through `store.dispatch`
 
 
-	// TODO: triggers stories from story to display state if they are passed
-	//       the `triggeredAt` points
-	setTimeout(loop.bind(this, store), interval);
-}
+    // TODO: triggers stories from story to display state if they are passed
+    //       the `triggeredAt` points
+    // hint: use store.dispatch to send event for changing events state
 
-function increment(state, modifier = 1) {
-	return state.counter + 1 * modifier;
+    // recursively calls loop method every second
+    setTimeout(loop.bind(this, store), interval);
 }
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -767,35 +748,39 @@ function deepCopy(obj) {
 }
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
 exports.default = reducer;
 function reducer(state, action) {
 
-	switch (action.type) {
-		case 'EXAMPLE_MUTATION':
-			state.example = action.payload;
-			return state;
-		case 'BUY_GENERATOR':
-			state.counter = state.counter - action.cost;
-			return state;
-		case 'UPDATE_GENERATOR':
-			//	var generator = new Generator(action.generators);
-			state.generators.push(action.generators);
-			return state;
-		case 'UPDATE_COUNTER':
-			state.counter++;
-			return state;
-		default:
-			return state;
-	}
+    switch (action.type) {
+        case 'EXAMPLE_MUTATION':
+            state.example = action.payload;
+            return state;
+        case 'BUY_GENERATOR':
+            state.counter = state.counter - action.price;
+            state.generators[action.id].quantity = state.generators[action.id].quantity + action.amount;
+            return state;
+        case 'UPDATE_GENERATOR':
+            //	var generator = new Generator(action.generators);
+            state.generators.push(action.generators);
+            return state;
+        case 'UPDATE_COUNTER':
+            state.counter++;
+            return state;
+        case 'UPDATE_PRICE':
+            state.generators[action.id].baseCost = action.newPrice;
+
+        default:
+            return state;
+    }
 };
 
 //function  changeExample() { 
@@ -813,7 +798,7 @@ function reducer(state, action) {
 //}
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -838,7 +823,7 @@ exports.default = function (store) {
 };
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -874,7 +859,7 @@ exports.default = function (store) {
 };
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -922,6 +907,194 @@ exports.default = function (store) {
 };
 
 /***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (store) {
+
+    function changeExample() {
+        store.dispatch({
+            type: 'EXAMPLE_MUTATION',
+            payload: "mutated"
+        });
+    }
+
+    function inceraseCount() {
+        store.dispatch({
+            type: 'UPDATE_COUNTER'
+        });
+    }
+
+    const steal = document.getElementById("you-steal");
+    var div = document.getElementById("count");
+
+    steal.addEventListener('click', () => {
+        inceraseCount();
+        div.textContent = store.state.counter;
+        console.log("This is the counter for how many cats you have: " + store.state.counter);
+    });
+
+    return class GeneratorComponent extends window.HTMLElement {
+
+        static get observedAttributes() {
+            return ['data-id'];
+        }
+
+        constructor() {
+            super();
+
+            var id = this.getAttribute("data-id");
+            var example = store.state.example;
+
+            var shadowRoot = this.attachShadow({ mode: 'open' });
+
+            // var descriptionArray = ["Take ten normal cats and combine them into a Recruiter! "
+            // + "Can produce 1 CATS for every 15 seconds.", "Take thirty normal cats and combine them into a Trainer! "
+            // + " Produces 5 CATS for every 15 seconds.", "Take 75 cats and hire them to run a boot camp. What could go wrong?"
+            // + " Produces 15 CATS for every 15 seconds"];
+            // var nameArray = ["Recrutier", "Trainer", "Camp"];
+            // var totalGenArray = ["4", "20", "60"];
+            // var costArray = ["10", "30", "75"];
+
+            // This is the generator object created from taken information from the store
+            var generator = new _generator2.default(store.state.generators[id]);
+
+            console.log("This is what is inside the store: ");
+            console.log(store.state);
+
+            //variables to be assigned to the shadow dom.
+
+            var name = generator.name;
+            var description = generator.description;
+            var totalGen = generator.rate;
+            var price = generator.baseCost;
+            console.log("THIS IS THE COST: " + price);
+            var totalAmount = generator.quantity;
+
+            // initializes the generator for view
+            var wrapper = document.createElement('form');
+
+            // Populates the actual generator view with values from generator object.
+            wrapper.innerHTML = ` 
+			<link rel="stylesheet" href="app.css">
+			<form>
+			
+				<div class= "generator">
+					<p class="amount">0</p>
+					<h5 class="name">CATS ${name}</h5>
+					<p class="description">${description}</p>
+					<input type="button" value="${price} Resource" id="recourse${id}" class="recourse${id}"></button>
+					<p class="number">${totalGen}/Min</p>
+				</div>
+				
+			</form>`;
+            shadowRoot.appendChild(wrapper);
+
+            console.log("Actual values from the generator object: ");
+            console.log(store.state.generators[id]);
+            console.log('Generator ID :' + id);
+            console.log("Actual values stored within the store: ");
+            console.log(store.state);
+
+            var genCount = shadowRoot.querySelector(".amount");
+            var genCost = shadowRoot.querySelector(".recourse" + id);
+
+            shadowRoot.querySelector('.recourse' + id).addEventListener('click', () => {
+                buyGenerator();
+                console.log(store.state);
+            });
+
+            function buyGenerator() {
+                // Subtracts value from
+                store.dispatch({
+                    type: 'BUY_GENERATOR',
+                    price: price,
+                    id: id,
+                    amount: 1
+                });
+
+                generator.quantity = store.state.generators[id].quantity;
+
+                // updates the "amount" on the generator object view.
+                // noinspection JSValidateTypes
+                div.textContent = store.state.counter;
+                genCount.textContent = store.state.generators[id].quantity;
+                console.log(store.state.counter);
+
+                //updates the "cost" on the generator object view
+                store.dispatch({
+                    type: 'UPDATE_PRICE',
+                    id: id,
+                    newPrice: generator.getCost()
+                });
+                console.log("THIS IS THE COST AFTER: " + price);
+
+                genCost.value = store.state.generators[id].baseCost + " Resource";
+                price = store.state.generators[id].baseCost;
+            }
+
+            function addGenerators() {
+                store.dispatch({
+                    type: 'UPDATE_GENERATOR',
+
+                    generators: generator
+                });
+            }
+        }
+
+        get id() {
+            return this.getAttribute('data-id');
+        }
+
+        set id(newId) {
+            return this.setAttribute('data-id', newId);
+        }
+
+        get description() {
+            return this.getAttribute('description');
+        }
+
+        set description(newDescription) {
+            return this.setAttribute('description', newDescription);
+        }
+
+        get name() {
+            return this.getAttribute('name');
+        }
+
+        set name(newName) {
+            return this.setAttribute('name', newName);
+        }
+
+        // TODO: subscribe to store on change event
+
+
+        attributeChangedCallback(name, OldValue, NewValue) {}
+
+        connectedCallback() {
+            store.subscribe(state => {});
+        }
+
+        disconnectedCallback() {}
+    };
+
+    window.customElements.define('game-generator', GeneratorComponent);
+};
+
+var _generator = __webpack_require__(11);
+
+var _generator2 = _interopRequireDefault(_generator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -932,209 +1105,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-exports.default = function (store) {
-
-	function changeExample() {
-		store.dispatch({
-			type: 'EXAMPLE_MUTATION',
-			payload: "mutated"
-		});
-	}
-
-	function inceraseCount() {
-		store.dispatch({
-			type: 'UPDATE_COUNTER'
-		});
-	}
-
-	//	window.incrementalGame = {
-	//	        state: {
-	//	            counter: 0
-	//	        }
-	//	    };
-
-	const steal = document.getElementById("you-steal");
-	var div = document.getElementById("count");
-
-	steal.addEventListener('click', () => {
-		inceraseCount();
-		div.textContent = store.state.counter;
-		console.log(store.state.counter);
-	});
-
-	return class GeneratorComponent extends window.HTMLElement {
-
-		static get observedAttributes() {
-			return ['data-id'];
-		}
-
-		constructor() {
-			super();
-
-			var id = this.getAttribute("data-id");
-			var example = store.state.example;
-
-			//this.onStateChange = this.handleStateChange.bind(this);
-
-
-			var shadowRoot = this.attachShadow({ mode: 'open' });
-
-			var descriptionArray = ["Take ten normal cats and combine them into a Recruiter! " + "Can produce 1 CATS for every 15 seconds.", "Take thirty normal cats and combine them into a Trainer! " + " Produces 5 CATS for every 15 seconds.", "Take 75 cats and hire them to run a boot camp. What could go wrong?" + " Produces 15 CATS for every 15 seconds"];
-			var nameArray = ["Recrutier", "Trainer", "Camp"];
-			var totalGenArray = ["4", "20", "60"];
-			var costArray = ["10", "30", "75"];
-
-			const generator = new _generator2.default(store.state.generators[id]);
-
-			console.log(store.state);
-			var name = nameArray[id];
-
-			var description = store.state.generators[id].description;
-			var totalGen = store.state.generators[id].rate;
-			var cost = generator.getCost();
-			var totalAmount = store.state.generators[id].quantity;
-			var totalAmount2 = store.state.generators[id].quantity;
-
-			//			var generator = {
-			//					baseCost: cost, 
-			//					description: description, 
-			//					name : name, 
-			//					quantity: totalAmount2, 
-			//					rate:totalGen, type:"autonomous", 
-			//					unlockValue: cost,
-			//					
-			//					getCost () {	
-			//						var quant = this.quantity;
-			//						var cost = this.baseCost;
-			//						var ratio = constants.growthRatio;
-			//						var totalCost = cost * Math.pow((1 + ratio), quant);
-			//						return Number(totalCost.toFixed(2));
-			//					},
-			//					
-			//					generate () {
-			//						// TODO: implement based on doc above
-			//						var quant = this.quantity;
-			//						var genRate = this.rate;
-			//						var totalGen = quant * genRate;
-			//						return totalGen;
-			//					}
-			//			};
-
-
-			var wrapper = document.createElement('form');
-			wrapper.innerHTML = ` 
-			<link rel="stylesheet" href="app.css">
-			<form>
-			
-				<div class= "generator">
-					<p class="amount">0</p>
-					<h5 class="name">CATS ${name}</h5>
-					<p class="description">${description}</p>
-					<input type="button" value="${cost} Resource" id="recourse${id}" class="recourse${id}"></button>
-					<p class="number">${totalGen}/Min</p>
-				</div>
-				
-			</form>`;
-			shadowRoot.appendChild(wrapper);
-
-			//console.log(name2 + " CHECK ME OUT");
-			console.log(generator);
-			console.log('recourse' + id);
-			console.log(store.state);
-
-			var genCount = shadowRoot.querySelector(".amount");
-
-			shadowRoot.querySelector('.recourse' + id).addEventListener('click', () => {
-				buyGenerator();
-				console.log(store.state);
-			});
-
-			function buyGenerator() {
-				store.dispatch({
-					type: 'BUY_GENERATOR',
-					cost: cost
-				});
-				var oldCost = shadowRoot.getElementById("recourse" + id).value;
-				oldCost = generator.getCost() + "Resource";
-				console.log(generator.getCost());
-				div.textContent = store.state.counter;
-				genCount.textContent = totalAmount++;
-				console.log(store.state.counter);
-			}
-
-			function addGenerators() {
-				store.dispatch({
-					type: 'UPDATE_GENERATOR',
-					generators: generator
-				});
-			}
-
-			addGenerators();
-		}
-
-		get id() {
-			return this.getAttribute('data-id');
-		}
-
-		set id(newId) {
-			return this.setAttribute('data-id', newId);
-		}
-
-		get description() {
-			return this.getAttribute('description');
-		}
-
-		set description(newDescription) {
-			return this.setAttribute('description', newDescription);
-		}
-
-		get name() {
-			return this.getAttribute('name');
-		}
-
-		set name(newName) {
-			return this.setAttribute('name', newName);
-		}
-
-		// TODO: subscribe to store on change event
-
-
-		attributeChangedCallback(name, OldValue, NewValue) {}
-
-		connectedCallback() {
-			store.subscribe(state => {
-				console.log("im subscribed");
-			});
-		}
-
-		disconnectedCallback() {}
-	};
-
-	window.customElements.define('game-generator', GeneratorComponent);
-};
-
-var _constants = __webpack_require__(0);
-
-var _constants2 = _interopRequireDefault(_constants);
-
-var _generator = __webpack_require__(12);
-
-var _generator2 = _interopRequireDefault(_generator);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _constants = __webpack_require__(0);
+var _constants = __webpack_require__(12);
 
 var _constants2 = _interopRequireDefault(_constants);
 
@@ -1172,6 +1143,7 @@ class Generator {
 		var cost = this.baseCost;
 		var ratio = _constants2.default.growthRatio;
 		var totalCost = cost * Math.pow(1 + ratio, quant);
+		console.log("Quantity: " + quant, ", Cost: " + cost, ", Ratio: " + ratio, ", Total Cost: " + totalCost);
 		return Number(totalCost.toFixed(2));
 	}
 
@@ -1191,7 +1163,7 @@ class Generator {
 exports.default = Generator;
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1200,28 +1172,49 @@ exports.default = Generator;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+exports.default = {
+	growthRatio: 0.05,
+	actions: {
+		BUY_GENERATOR: 'BUY_GENERATOR',
+		EXAMPLE: 'EXAMPLE_MUTATION',
+		INCREMENT: 'INCREMENT',
+		CHECK_STORY: 'CHECK_STORY'
+	}
+};
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 exports.default = function (store) {
-	return class StoryBookComponent extends window.HTMLElement {
-		constructor() {
-			super();
-			this.store = store;
+    return class StoryBookComponent extends window.HTMLElement {
+        constructor() {
+            super();
+            this.store = store;
+            // TODO: initial DOM rendering of story itself
 
-			this.onStateChange = this.handleStateChange.bind(this);
-		}
+            this.onStateChange = this.handleStateChange.bind(this);
+        }
 
-		handleStateChange(newState) {
-			// TODO: display story based on the state "resource" and "stories"
-		}
+        handleStateChange(newState) {
+            // TODO: display story based on the state "resource" and "stories"
+        }
 
-		connectedCallback() {
-			this.store.subscribe(this.onStateChange);
-		}
+        connectedCallback() {
+            this.store.subscribe(this.onStateChange);
+        }
 
-		disconnectedCallback() {
-			this.store.unsubscribe(this.onStateChange);
-		}
-	};
+        disconnectedCallback() {
+            this.store.unsubscribe(this.onStateChange);
+        }
+    };
 };
 
 /***/ })

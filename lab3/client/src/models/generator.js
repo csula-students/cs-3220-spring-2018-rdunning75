@@ -35,6 +35,7 @@ export default class Generator {
 		var cost = this.baseCost;
 		var ratio = constants.growthRatio;
 		var totalCost = cost * Math.pow((1 + ratio), quant);
+		console.log("Quantity: " + quant, ", Cost: "+ cost,", Ratio: " + ratio,", Total Cost: "+ totalCost );
 		return Number(totalCost.toFixed(2));
 	}
 

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.sql.*;
+
 import edu.csula.storage.UsersDAO;
 import edu.csula.storage.servlet.EventsDAOImpl;
 import edu.csula.storage.EventsDAO;
@@ -34,8 +36,13 @@ public class AdminEventsServlet extends HttpServlet {
 		}
 
 			EventsDAO dao = new EventsDAOImpl(getServletContext());
-			List<Event> events = dao.getAll();
-			int startId = 0;
+		List<Event> events = null;
+		try {
+			events = dao.getAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		int startId = 0;
 
 			if(request.getAttribute("id") == null || request.getAttribute("id") == ""){
 				request.setAttribute("id",events.size());
@@ -161,7 +168,12 @@ public class AdminEventsServlet extends HttpServlet {
 
 
 		EventsDAO dao = new EventsDAOImpl(getServletContext());
-		List<Event> events = dao.getAll();
+		List<Event> events = null;
+		try {
+			events = dao.getAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		List<Event> change = new ArrayList<Event>();
 
 
