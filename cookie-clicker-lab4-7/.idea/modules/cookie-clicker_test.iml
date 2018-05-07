@@ -7,7 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/resources" type="java-test-resource" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cookie-clicker_main" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-nop:1.7.12" level="project" />
@@ -22,6 +22,7 @@
     <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy:1.8.5" level="project" />
     <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy-agent:1.8.5" level="project" />
     <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.6" level="project" />
+    <orderEntry type="library" exported="" name="javax.servlet:jstl:1.2" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="cookie-clicker_main" />
 </module>

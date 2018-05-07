@@ -12,7 +12,9 @@ public class Database implements edu.csula.storage.Database{
 	private static final String username = "root";
 	private static final String password = "";
 
+
 	public Database() {
+		System.out.println(url + " this is the url");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch( ClassNotFoundException e ) {
