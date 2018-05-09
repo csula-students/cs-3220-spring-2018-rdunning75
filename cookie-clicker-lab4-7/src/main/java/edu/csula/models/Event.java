@@ -5,12 +5,21 @@ public class Event {
 	private String name;
 	private String description;
 	private int triggerAt;
+	private int createdBy;
 
 	public Event(int id, String name, String description, int triggerAt) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.triggerAt = triggerAt;
+	}
+
+	public Event(int id, String name, String description, int triggerAt,int createdBy) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.triggerAt = triggerAt;
+		this.createdBy = createdBy;
 	}
 
 	public int getId() {
@@ -40,6 +49,10 @@ public class Event {
 	public void setTriggerAt(int triggerAt) {
 		this.triggerAt = triggerAt;
 	}
+
+	public  int getCreatedBy(){ return createdBy;}
+
+	public void setCreatedBy(int createdBy) { this.createdBy = createdBy; }
 
 	@Override
 	public boolean equals(Object obj) {

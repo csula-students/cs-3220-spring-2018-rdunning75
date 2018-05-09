@@ -1,0 +1,6 @@
+cs3 server:
+
+http://cs3.calstatela.edu:8080/cs3220stu115/admin/auth
+
+git pull request :
+https://github.com/csula-students/cs-3220-spring-2018-rdunning75/pull/8

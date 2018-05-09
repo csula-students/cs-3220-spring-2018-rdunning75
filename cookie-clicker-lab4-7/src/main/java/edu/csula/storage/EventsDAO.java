@@ -1,5 +1,6 @@
 package edu.csula.storage;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +14,7 @@ public interface EventsDAO {
 	/**
 	 * Find all events given storage
 	 */
-	public List<Event> getAll();
+	public List<Event> getAll() throws SQLException;
 	/**
 	 * Find certain event given its id
 	 */
