@@ -6,15 +6,14 @@ import java.sql.SQLException;
 
 public class Database implements edu.csula.storage.Database{
 	// FIXME: don't hard commit your credential
-	private static final String database = "kats";
+	private static final String database = "cs3220stu115";
 	private static final String host = "localhost";
 	private static final String url = String.format("jdbc:mysql://%s/%s", host, database);
-	private static final String username = "root";
-	private static final String password = "";
+	private static final String username = "cs3220stu115";
+	private static final String password = "RXzw*.Mc";
 
 
 	public Database() {
-		System.out.println(url + " this is the url");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch( ClassNotFoundException e ) {
