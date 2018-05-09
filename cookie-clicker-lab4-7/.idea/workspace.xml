@@ -7,29 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="737672d1-6e2b-4106-a382-2def9b45fbd4" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/classes/edu/csula/web/GameServlet.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/csula/web/GameServlet.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/game.jsp" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/csula/web/AdminEventsServlet.class" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/csula/web/AdminEventsServlet.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/edu/csula/web/AdminGeneratorsServlet.class" afterPath="$PROJECT_DIR$/build/classes/java/main/edu/csula/web/AdminGeneratorsServlet.class" />
-      <change beforePath="$PROJECT_DIR$/build/libs/exploded/cookie-clicker.war/WEB-INF/classes/edu/csula/web/AdminEventsServlet.class" afterPath="$PROJECT_DIR$/build/libs/exploded/cookie-clicker.war/WEB-INF/classes/edu/csula/web/AdminEventsServlet.class" />
-      <change beforePath="$PROJECT_DIR$/build/libs/exploded/cookie-clicker.war/WEB-INF/classes/edu/csula/web/AdminGeneratorsServlet.class" afterPath="$PROJECT_DIR$/build/libs/exploded/cookie-clicker.war/WEB-INF/classes/edu/csula/web/AdminGeneratorsServlet.class" />
-      <change beforePath="$PROJECT_DIR$/client/src/models/generator.js" afterPath="$PROJECT_DIR$/client/src/models/generator.js" />
-      <change beforePath="$PROJECT_DIR$/client/src/reducer.js" afterPath="$PROJECT_DIR$/client/src/reducer.js" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/generator.js" afterPath="$PROJECT_DIR$/client/src/views/generator.js" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/edu/csula/storage/mysql/Database.class" afterPath="$PROJECT_DIR$/out/production/classes/edu/csula/storage/mysql/Database.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/edu/csula/web/AdminEventsServlet.class" afterPath="$PROJECT_DIR$/out/production/classes/edu/csula/web/AdminEventsServlet.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/edu/csula/web/AdminGeneratorsServlet.class" afterPath="$PROJECT_DIR$/out/production/classes/edu/csula/web/AdminGeneratorsServlet.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/edu/csula/web/AuthenticationServlet.class" afterPath="$PROJECT_DIR$/out/production/classes/edu/csula/web/AuthenticationServlet.class" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/csula/storage/mysql/Database.java" afterPath="$PROJECT_DIR$/src/main/java/edu/csula/storage/mysql/Database.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/csula/web/AdminEventsServlet.java" afterPath="$PROJECT_DIR$/src/main/java/edu/csula/web/AdminEventsServlet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/csula/web/AdminGeneratorsServlet.java" afterPath="$PROJECT_DIR$/src/main/java/edu/csula/web/AdminGeneratorsServlet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/csula/web/AuthenticationServlet.java" afterPath="$PROJECT_DIR$/src/main/java/edu/csula/web/AuthenticationServlet.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-events.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-events.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin-generators.jsp" />
       <change beforePath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/../lab3/app.css" afterPath="$PROJECT_DIR$/../lab3/app.css" />
       <change beforePath="$PROJECT_DIR$/../lab3/app.js" afterPath="$PROJECT_DIR$/../lab3/app.js" />
@@ -1636,7 +1613,7 @@
       <workItem from="1525569685357" duration="50877000" />
       <workItem from="1525836076599" duration="804000" />
       <workItem from="1525837899374" duration="1961000" />
-      <workItem from="1525839956344" duration="1927000" />
+      <workItem from="1525839956344" duration="1992000" />
     </task>
     <servers />
   </component>
@@ -1673,7 +1650,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124468000" />
+    <option name="totallyTimeSpent" value="124533000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1707,8 +1684,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2671674" sideWeight="0.7650957" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939914" sideWeight="0.49410897" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29828325" sideWeight="0.8468336" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34310135" sideWeight="0.48680353" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29828325" sideWeight="0.8468336" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34310135" sideWeight="0.48680353" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34310135" sideWeight="0.51319647" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939914" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13691275" sideWeight="0.4948605" order="0" side_tool="false" content_ui="tabs" />

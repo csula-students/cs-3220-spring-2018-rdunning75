@@ -1,4 +1,4 @@
-class PubSub {
+sssclass PubSub {
     constructor () {
         this.subscribers = [];
     }
@@ -20,7 +20,7 @@ class PubSub {
 //=======================================================================
 
 //const store = new Store(reducer, {});
-const pubSub = new PubSub();
+const pubSub s= new PubSub();
 
 window.incrementalGame = {
         state: {
