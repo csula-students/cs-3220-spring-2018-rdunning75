@@ -23,9 +23,9 @@
 
 <nav>
     <a href="admin-info.html">Game Information</a> |
-    <a href="/admin/generators">Generators</a> |
-    <a href="/admin/events">Events</a>
-    <form action="/admin/auth" method="get">
+    <a href="/cs3220stu115/admin/generators">Generators</a> |
+    <a href="/cs3220stu115/admin/events">Events</a>
+    <form action="/cs3220stu115/admin/auth" method="get">
         <button type="submit">Log Out</button>
         <input type="hidden" value="delete" name="logout">
     </form>

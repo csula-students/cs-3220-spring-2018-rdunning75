@@ -34,8 +34,10 @@ public class AuthenticationServlet extends HttpServlet {
 		UsersDAOImpl usersDAO = new UsersDAOImpl(request.getSession());
 		String password = request.getParameter("password");
 		String username = request.getParameter("username");
+		//will need to remove the cs3220stu115 pathing
+
 		if(usersDAO.authenticate(username,password)){
-			response.sendRedirect("/admin/generators");
+			response.sendRedirect("/cs3220stu115/admin/generators");
 		//	request.getRequestDispatcher("/admin/generators").forward(request,response);
 			return;
 		} else {

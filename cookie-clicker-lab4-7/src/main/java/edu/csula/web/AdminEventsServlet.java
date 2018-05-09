@@ -33,7 +33,7 @@ public class AdminEventsServlet extends HttpServlet {
 
         UsersDAO users = new UsersDAOImpl(request.getSession());
         if (users.getAuthenticatedUser().equals(Optional.empty())) {
-            response.sendRedirect("/admin/auth");
+            response.sendRedirect("cs3220stu115/admin/auth");
             return;
         }
 
