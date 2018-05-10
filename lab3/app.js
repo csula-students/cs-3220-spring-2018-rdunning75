@@ -1,14 +1,14 @@
 //class PubSub {
 //    constructor () {
-//        this.subscribers = [];
+//      s  this.subscribers = [];
 //    }
 //
-//    // subscribe allows a new subscriber to listen for changes by providing
+//    // s allows a new subscriber to listen for changes by providing
 //    // callback function in the parameter
 //    subscribe (fn) {
 //        this.subscribers.push(fn);
 //    }
-//
+//s
 //    // one can publish any data to subscribers
 //    publish (data) {
 //        this.subscribers.forEach(subscriber => {
