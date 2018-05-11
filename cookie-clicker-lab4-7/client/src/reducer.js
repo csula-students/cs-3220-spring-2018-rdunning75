@@ -23,3 +23,32 @@ export default function reducer(state, action) {
     }
 
 };
+
+//function  changeExample() { 
+//	store.dispatch({
+//		type: 'EXAMPLE_MUTATION',
+//		payload : "mutated"
+//	});
+
+//function buyGenerator() {
+//	store.dispatch({
+//		type: 'BUY_GENERATOR'
+//	});
+////}	
+//
+//} 
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+

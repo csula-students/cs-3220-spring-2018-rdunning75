@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Lazer CATS</title>
-
-
-    <link rel="stylesheet" href="app.css">
-    ss
+    <link rel="stylesheet" href="\cs3220stu115\css\app.css">
+    <link rel="stylesheet" href="\cs3220stu115\css\generator.css">
+    <%--<script>--%>
+        <%--window.game = {};--%>
+        <%--window.game.state = ${state};--%>
+    <%--</script>--%>
 </head>
 <body>
 
@@ -32,8 +34,8 @@
 </div>
 
 
-<script src="app.js"></script>
-<script src="dest/app.bundle.js"></script>
+
+<script src="\cs3220stu115\app.bundle.js"></script>
 
 </body>
 </html>
