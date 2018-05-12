@@ -1,4 +1,5 @@
 import Generator from '../models/generator';
+import {loop} from "../game";
 
 export default function (store) {
 
@@ -16,6 +17,8 @@ export default function (store) {
             type: 'UPDATE_COUNTER'
         });
     }
+
+
 
 
     const steal = document.getElementById("you-steal");
@@ -45,19 +48,11 @@ export default function (store) {
 
             var shadowRoot = this.attachShadow({mode: 'open'});
 
-            // var descriptionArray = ["Take ten normal cats and combine them into a Recruiter! "
-            // + "Can produce 1 CATS for every 15 seconds.", "Take thirty normal cats and combine them into a Trainer! "
-            // + " Produces 5 CATS for every 15 seconds.", "Take 75 cats and hire them to run a boot camp. What could go wrong?"
-            // + " Produces 15 CATS for every 15 seconds"];
-            // var nameArray = ["Recrutier", "Trainer", "Camp"];
-            // var totalGenArray = ["4", "20", "60"];
-            // var costArray = ["10", "30", "75"];
-
             // This is the generator object created from taken information from the store
             var generator = new Generator(store.state.generators[id]);
+            s
 
-            console.log("This is what is inside the store: ");
-            console.log(store.state);
+
 
             //variables to be assigned to the shadow dom.
 
@@ -65,8 +60,10 @@ export default function (store) {
             var description = generator.description;
             var totalGen = generator.rate;
             var price = generator.baseCost
-            console.log("THIS IS THE COST: "+price);
             var totalAmount = generator.quantity;
+
+            var counter = store.state.counter;
+
 
 
             // initializes the generator for view
@@ -89,12 +86,14 @@ export default function (store) {
 
             shadowRoot.appendChild(wrapper);
 
-
+            this.
             console.log("Actual values from the generator object: ");
             console.log(store.state.generators[id]);
             console.log('Generator ID :' + id);
             console.log("Actual values stored within the store: ");
             console.log(store.state);
+
+
 
             var genCount = shadowRoot.querySelector(".amount");
             var genCost = shadowRoot.querySelector(".recourse"+id);

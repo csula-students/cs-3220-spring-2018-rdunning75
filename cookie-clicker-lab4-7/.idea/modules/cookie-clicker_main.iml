@@ -28,5 +28,6 @@
     <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.45" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.websocket:javax.websocket-api:1.0" level="project" />
+    <orderEntry type="library" exported="" name="javax.servlet:jstl:1.2" level="project" />
   </component>
 </module>

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,9 +70,59 @@
 "use strict";
 
 
-__webpack_require__(1);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.loop = loop;
+// default interval as 1 second
+const interval = 1000;
 
-var _game = __webpack_require__(4);
+/**
+ * loop is main loop of the game, which will be executed once every second (
+ * based on the interval variable configuration)
+ */
+function loop(store) {
+    // TODO: increment counter based on the generators in the state
+    // hint: read how many "generators" in store and iterate through them to
+    //       count how many value to increment to "resource"
+    // hint: remember to change event through `store.dispatch`
+    var generators = new Array();
+    var add = 0;
+    console.log(store.state.generators.length);
+    for (var i = 0; i < store.state.generators.length; i++) {
+        generators.push(store.state.generators[i].quantity);
+        add += store.state.generators[i].quantity * store.state.generators[i].rate;
+        console.log("add in the loop" + add);
+    }
+
+    console.log(generators);
+    console.log("add after the loop" + add);
+
+    store.dispatch({
+        type: 'LOOP_COUNTER',
+        change: add
+    });
+
+    console.log(store.state.counter);
+
+    // TODO: triggers stories from story to display state if they are passed
+    //       the `triggeredAt` points
+    // hint: use store.dispatch to send event for changing events state
+
+    // recursively calls loop method every second
+    setTimeout(loop.bind(this, store), interval);
+}
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(2);
+
+var _game = __webpack_require__(0);
 
 var _store = __webpack_require__(5);
 
@@ -223,7 +273,7 @@ function main() {
 }
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function(){/*
@@ -424,10 +474,10 @@ Eg.whenReady(function(){requestAnimationFrame(function(){window.WebComponents.re
 
 //# sourceMappingURL=webcomponents-lite.js.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(4)))
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
 var g;
@@ -454,7 +504,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -644,39 +694,6 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.loop = loop;
-// default interval as 1 second
-const interval = 1000;
-
-/**
- * loop is main loop of the game, which will be executed once every second (
- * based on the interval variable configuration)
- */
-function loop(store) {
-    // TODO: increment counter based on the generators in the state
-    // hint: read how many "generators" in store and iterate through them to
-    //       count how many value to increment to "resource"
-    // hint: remember to change event through `store.dispatch`
-
-
-    // TODO: triggers stories from story to display state if they are passed
-    //       the `triggeredAt` points
-    // hint: use store.dispatch to send event for changing events state
-
-    // recursively calls loop method every second
-    setTimeout(loop.bind(this, store), interval);
-}
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -769,15 +786,17 @@ function reducer(state, action) {
             state.generators[action.id].quantity = state.generators[action.id].quantity + action.amount;
             return state;
         case 'UPDATE_GENERATOR':
-            //	var generator = new Generator(action.generators);
             state.generators.push(action.generators);
             return state;
         case 'UPDATE_COUNTER':
-            state.counter++;
+            state.counter += 1;
+            return state;
+        case 'LOOP_COUNTER':
+            state.counter += action.change;
             return state;
         case 'UPDATE_PRICE':
             state.generators[action.id].baseCost = action.newPrice;
-
+            return state;
         default:
             return state;
     }
@@ -955,19 +974,9 @@ exports.default = function (store) {
 
             var shadowRoot = this.attachShadow({ mode: 'open' });
 
-            // var descriptionArray = ["Take ten normal cats and combine them into a Recruiter! "
-            // + "Can produce 1 CATS for every 15 seconds.", "Take thirty normal cats and combine them into a Trainer! "
-            // + " Produces 5 CATS for every 15 seconds.", "Take 75 cats and hire them to run a boot camp. What could go wrong?"
-            // + " Produces 15 CATS for every 15 seconds"];
-            // var nameArray = ["Recrutier", "Trainer", "Camp"];
-            // var totalGenArray = ["4", "20", "60"];
-            // var costArray = ["10", "30", "75"];
-
             // This is the generator object created from taken information from the store
             var generator = new _generator2.default(store.state.generators[id]);
-
-            console.log("This is what is inside the store: ");
-            console.log(store.state);
+            s;
 
             //variables to be assigned to the shadow dom.
 
@@ -975,8 +984,9 @@ exports.default = function (store) {
             var description = generator.description;
             var totalGen = generator.rate;
             var price = generator.baseCost;
-            console.log("THIS IS THE COST: " + price);
-            var totalAmount = generator.quantitys;
+            var totalAmount = generator.quantity;
+
+            var counter = store.state.counter;
 
             // initializes the generator for view
             var wrapper = document.createElement('form');
@@ -998,7 +1008,7 @@ exports.default = function (store) {
 
             shadowRoot.appendChild(wrapper);
 
-            console.log("Actual values from the generator object: ");
+            this.console.log("Actual values from the generator object: ");
             console.log(store.state.generators[id]);
             console.log('Generator ID :' + id);
             console.log("Actual values stored within the store: ");
@@ -1092,6 +1102,8 @@ exports.default = function (store) {
 var _generator = __webpack_require__(11);
 
 var _generator2 = _interopRequireDefault(_generator);
+
+var _game = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

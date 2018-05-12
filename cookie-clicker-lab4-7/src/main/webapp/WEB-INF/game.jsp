@@ -23,7 +23,7 @@
 
 <div class="you-flex">
     <h2 class="space">Current CATS count: </h2>
-    <h2 id="count">0</h2>
+    <h2 id="count">${counter}</h2>
     <button id="you-steal">Steal a Cat</button>
 </div>
 

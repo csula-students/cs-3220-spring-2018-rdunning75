@@ -9,15 +9,17 @@ export default function reducer(state, action) {
             state.generators[action.id].quantity = state.generators[action.id].quantity + action.amount;
             return state;
         case 'UPDATE_GENERATOR':
-            //	var generator = new Generator(action.generators);
             state.generators.push(action.generators);
             return state;
         case 'UPDATE_COUNTER' :
-            state.counter++;
+            state.counter += 1;
+            return state;
+        case 'LOOP_COUNTER' :
+            state.counter += action.change;
             return state;
         case 'UPDATE_PRICE' :
             state.generators[action.id].baseCost = action.newPrice;
-
+            return state;
         default:
             return state;
     }
