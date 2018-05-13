@@ -27,7 +27,7 @@ export default function (store) {
 
     steal.addEventListener('click', () => {
         inceraseCount();
-        div.textContent = store.state.counter;
+        div.textContent = window.game.state.counter;
         console.log("This is the counter for how many cats you have: " + store.state.counter);
     });
 
@@ -43,14 +43,15 @@ export default function (store) {
 
 
             var id = this.getAttribute("data-id");
-            var example = store.state.example;
+            var state = store.state;
+            state = this.getAttribute("state");
 
 
             var shadowRoot = this.attachShadow({mode: 'open'});
 
             // This is the generator object created from taken information from the store
             var generator = new Generator(store.state.generators[id]);
-            s
+
 
 
 
@@ -86,7 +87,7 @@ export default function (store) {
 
             shadowRoot.appendChild(wrapper);
 
-            this.
+
             console.log("Actual values from the generator object: ");
             console.log(store.state.generators[id]);
             console.log('Generator ID :' + id);
@@ -119,9 +120,9 @@ export default function (store) {
 
                 // updates the "amount" on the generator object view.
                 // noinspection JSValidateTypes
-                div.textContent = store.state.counter;
-                genCount.textContent = store.state.generators[id].quantity;
-                console.log(store.state.counter);
+                div.textContent = window.game.state.counter;
+                genCount.textContent = window.game.state.generators[id].quantity;
+                console.log(window.game.state.counter);
 
                 //updates the "cost" on the generator object view
                 store.dispatch({
@@ -131,8 +132,8 @@ export default function (store) {
                 });
                 console.log("THIS IS THE COST AFTER: "+price);
 
-                genCost.value = store.state.generators[id].baseCost + " Resource";
-                price = store.state.generators[id].baseCost;
+                genCost.value = window.game.state.generators[id].baseCost + " Resource";
+                price = window.game.state.generators[id].baseCost;
 
 
 

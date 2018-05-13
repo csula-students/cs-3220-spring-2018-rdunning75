@@ -2,23 +2,23 @@ export default function reducer(state, action) {
 
     switch (action.type) {
         case 'EXAMPLE_MUTATION':
-            state.example = action.payload;
+            window.game.state.example = action.payload;
             return state;
         case 'BUY_GENERATOR':
-            state.counter = state.counter - action.price;
-            state.generators[action.id].quantity = state.generators[action.id].quantity + action.amount;
+            window.game.state.counter = window.game.state.counter - action.price;
+            window.game.state.generators[action.id].quantity = window.game.state.generators[action.id].quantity + action.amount;
             return state;
         case 'UPDATE_GENERATOR':
-            state.generators.push(action.generators);
+            window.game.state.generators.push(action.generators);
             return state;
         case 'UPDATE_COUNTER' :
-            state.counter += 1;
+            window.game.state.counter += 1;
             return state;
         case 'LOOP_COUNTER' :
-            state.counter += action.change;
+            window.game.state.counter += action.change;
             return state;
         case 'UPDATE_PRICE' :
-            state.generators[action.id].baseCost = action.newPrice;
+            window.game.state.generators[action.id].baseCost = action.newPrice;
             return state;
         default:
             return state;

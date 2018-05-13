@@ -15,7 +15,7 @@ export default class Generator {
 		this.name = meta.name;
 		this.description = meta.description;
 		this.rate = meta.rate;
-		this.quantity = meta.quantity;
+		this.quantity = 0;
 		this.baseCost = meta.baseCost;
 		this.unlockValue = meta.unlockValue;
 	}

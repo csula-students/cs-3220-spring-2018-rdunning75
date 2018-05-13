@@ -1,3 +1,5 @@
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,10 +7,13 @@
     <title>Lazer CATS</title>
     <link rel="stylesheet" href="\cs3220stu115\css\app.css">
     <link rel="stylesheet" href="\cs3220stu115\css\generator.css">
-    <%--<script>--%>
-        <%--window.game = {};--%>
-        <%--window.game.state = ${state};--%>
-    <%--</script>--%>
+    <script>
+        window.game = {};
+        window.game.state = ${state};
+        var generators = window.game.state.generators;
+        console.log(window.game.state);
+        console.log(window.game.state.generators);
+    </script>
 </head>
 <body>
 
@@ -28,9 +33,9 @@
 </div>
 
 <div class="generator-flex">
-    <game-generator data-id="0"></game-generator>
-    <game-generator data-id="1"></game-generator>
-    <game-generator data-id="2"></game-generator>
+    <c:forEach items="${generators}" var="e">
+        <game-generator data-id="${(e.getId()-1)}"></game-generator>
+    </c:forEach>
 </div>
 
 

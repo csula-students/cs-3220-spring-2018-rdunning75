@@ -82,37 +82,7 @@ main();
 // main function wraps everything at top level
 function main () {
 	// TODO: fill the blank based on the theme you have choosen
-	const initialState = {
-		example: 'Hello custom element',
-		counter: 0,
-		generators: [
-			
-			{ baseCost: 10,
-			  description: "Take ten normal cats and combine them into a Recruiter! Can produce 1 CATS for every 15 seconds.",
-			  name: "Recrutier", 
-			  quantity: 0,
-			  rate: 4,
-			  type: "autonomous",
-			  unclockValue: 10},
-			  
-			{ baseCost: 30,
-			  description: "Take thirty normal cats and combine them into a Trainer! Produces 5 CATS for every 15 seconds.",
-			  name: "Trainer",
-			  quantity: 0,
-			  rate: 20,
-			  type: "autonomous",
-			  unclockValue: 30},
-			  
-			{ baseCost: 75,
-			  description: "Take 75 cats and hire them to run a boot camp. What could go wrong? Produces 15 CATS for every 15 seconds",
-			  name: "Camp" ,
-			  quantity: 0,
-			  rate: 60,
-			  type: "autonomous",
-			  unclockValue: 75}
-			  ],
-		story: []
-	};
+	const initialState = window.game.state;
 
 	// initialize store
 	const store = new Store(reducer, initialState);

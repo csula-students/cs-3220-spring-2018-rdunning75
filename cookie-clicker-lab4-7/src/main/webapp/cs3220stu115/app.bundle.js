@@ -88,10 +88,11 @@ function loop(store) {
     // hint: remember to change event through `store.dispatch`
     var generators = new Array();
     var add = 0;
-    console.log(store.state.generators.length);
-    for (var i = 0; i < store.state.generators.length; i++) {
-        generators.push(store.state.generators[i].quantity);
-        add += store.state.generators[i].quantity * store.state.generators[i].rate;
+    console.log(window.game.state.generators.length);
+    for (var i = 0; i < window.game.state.generators.length; i++) {
+        generators.push(window.game.state.generators[i].quantity);
+        console.log(window.game.state.generators[i]);
+        add += window.game.state.generators[i].quantity * window.game.state.generators[i].rate;
         console.log("add in the loop" + add);
     }
 
@@ -103,7 +104,8 @@ function loop(store) {
         change: add
     });
 
-    console.log(store.state.counter);
+    console.log(window.game.state.counter);
+    console.log(window.game.state.generators);
 
     // TODO: triggers stories from story to display state if they are passed
     //       the `triggeredAt` points
@@ -224,52 +226,29 @@ main();
 
 // main function wraps everything at top level
 function main() {
-	// TODO: fill the blank based on the theme you have choosen
-	const initialState = {
-		example: 'Hello custom element',
-		counter: 0,
-		generators: [{ baseCost: 10,
-			description: "Take ten normal cats and combine them into a Recruiter! Can produce 1 CATS for every 15 seconds.",
-			name: "Recrutier",
-			quantity: 0,
-			rate: 4,
-			type: "autonomous",
-			unclockValue: 10 }, { baseCost: 30,
-			description: "Take thirty normal cats and combine them into a Trainer! Produces 5 CATS for every 15 seconds.",
-			name: "Trainer",
-			quantity: 0,
-			rate: 20,
-			type: "autonomous",
-			unclockValue: 30 }, { baseCost: 75,
-			description: "Take 75 cats and hire them to run a boot camp. What could go wrong? Produces 15 CATS for every 15 seconds",
-			name: "Camp",
-			quantity: 0,
-			rate: 60,
-			type: "autonomous",
-			unclockValue: 75 }],
-		story: []
-	};
+  // TODO: fill the blank based on the theme you have choosen
+  const initialState = window.game.state;
 
-	// initialize store
-	const store = new _store2.default(_reducer2.default, initialState);
-	console.log((0, _example2.default)(store));
+  // initialize store
+  const store = new _store2.default(_reducer2.default, initialState);
+  console.log((0, _example2.default)(store));
 
-	// define web components
-	window.customElements.define('component-example', (0, _example2.default)(store));
-	// no longer used
-	window.customElements.define('game-button', (0, _button2.default)(store));
-	window.customElements.define('game-counter', (0, _counter2.default)(store));
-	// lab 3
-	window.customElements.define('game-generator', (0, _generator2.default)(store));
-	// homework 1
-	window.customElements.define('game-story-book', (0, _storyBook2.default)(store));
+  // define web components
+  window.customElements.define('component-example', (0, _example2.default)(store));
+  // no longer used
+  window.customElements.define('game-button', (0, _button2.default)(store));
+  window.customElements.define('game-counter', (0, _counter2.default)(store));
+  // lab 3
+  window.customElements.define('game-generator', (0, _generator2.default)(store));
+  // homework 1
+  window.customElements.define('game-story-book', (0, _storyBook2.default)(store));
 
-	// For ease of debugging purpose, we will expose the critical store under window
-	// ps: window is global
-	window.store = store;
+  // For ease of debugging purpose, we will expose the critical store under window
+  // ps: window is global
+  window.store = store;
 
-	// start game loop
-	(0, _game.loop)(store);
+  // start game loop
+  (0, _game.loop)(store);
 }
 
 /***/ }),
@@ -779,23 +758,23 @@ function reducer(state, action) {
 
     switch (action.type) {
         case 'EXAMPLE_MUTATION':
-            state.example = action.payload;
+            window.game.state.example = action.payload;
             return state;
         case 'BUY_GENERATOR':
-            state.counter = state.counter - action.price;
-            state.generators[action.id].quantity = state.generators[action.id].quantity + action.amount;
+            window.game.state.counter = window.game.state.counter - action.price;
+            window.game.state.generators[action.id].quantity = window.game.state.generators[action.id].quantity + action.amount;
             return state;
         case 'UPDATE_GENERATOR':
-            state.generators.push(action.generators);
+            window.game.state.generators.push(action.generators);
             return state;
         case 'UPDATE_COUNTER':
-            state.counter += 1;
+            window.game.state.counter += 1;
             return state;
         case 'LOOP_COUNTER':
-            state.counter += action.change;
+            window.game.state.counter += action.change;
             return state;
         case 'UPDATE_PRICE':
-            state.generators[action.id].baseCost = action.newPrice;
+            window.game.state.generators[action.id].baseCost = action.newPrice;
             return state;
         default:
             return state;
@@ -956,7 +935,7 @@ exports.default = function (store) {
 
     steal.addEventListener('click', () => {
         inceraseCount();
-        div.textContent = store.state.counter;
+        div.textContent = window.game.state.counter;
         console.log("This is the counter for how many cats you have: " + store.state.counter);
     });
 
@@ -970,13 +949,13 @@ exports.default = function (store) {
             super();
 
             var id = this.getAttribute("data-id");
-            var example = store.state.example;
+            var state = store.state;
+            state = this.getAttribute("state");
 
             var shadowRoot = this.attachShadow({ mode: 'open' });
 
             // This is the generator object created from taken information from the store
             var generator = new _generator2.default(store.state.generators[id]);
-            s;
 
             //variables to be assigned to the shadow dom.
 
@@ -1008,7 +987,7 @@ exports.default = function (store) {
 
             shadowRoot.appendChild(wrapper);
 
-            this.console.log("Actual values from the generator object: ");
+            console.log("Actual values from the generator object: ");
             console.log(store.state.generators[id]);
             console.log('Generator ID :' + id);
             console.log("Actual values stored within the store: ");
@@ -1035,9 +1014,9 @@ exports.default = function (store) {
 
                 // updates the "amount" on the generator object view.
                 // noinspection JSValidateTypes
-                div.textContent = store.state.counter;
-                genCount.textContent = store.state.generators[id].quantity;
-                console.log(store.state.counter);
+                div.textContent = window.game.state.counter;
+                genCount.textContent = window.game.state.generators[id].quantity;
+                console.log(window.game.state.counter);
 
                 //updates the "cost" on the generator object view
                 store.dispatch({
@@ -1047,8 +1026,8 @@ exports.default = function (store) {
                 });
                 console.log("THIS IS THE COST AFTER: " + price);
 
-                genCost.value = store.state.generators[id].baseCost + " Resource";
-                price = store.state.generators[id].baseCost;
+                genCost.value = window.game.state.generators[id].baseCost + " Resource";
+                price = window.game.state.generators[id].baseCost;
             }
 
             function addGenerators() {
@@ -1136,7 +1115,7 @@ class Generator {
 		this.name = meta.name;
 		this.description = meta.description;
 		this.rate = meta.rate;
-		this.quantity = meta.quantity;
+		this.quantity = 0;
 		this.baseCost = meta.baseCost;
 		this.unlockValue = meta.unlockValue;
 	}
