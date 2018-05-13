@@ -50,7 +50,7 @@ export default function (store) {
             var shadowRoot = this.attachShadow({mode: 'open'});
 
             // This is the generator object created from taken information from the store
-            var generator = new Generator(store.state.generators[id]);
+            var generator = new Generator(window.game.state.generators[id]);
 
 
 
@@ -116,7 +116,7 @@ export default function (store) {
 
 
 
-                generator.quantity = store.state.generators[id].quantity;
+                generator.quantity = window.game.state.generators[id].quantity;
 
                 // updates the "amount" on the generator object view.
                 // noinspection JSValidateTypes
