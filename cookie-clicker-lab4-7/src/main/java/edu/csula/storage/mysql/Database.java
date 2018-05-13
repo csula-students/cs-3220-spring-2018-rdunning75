@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 public class Database implements edu.csula.storage.Database{
 	// FIXME: don't hard commit your credential
+
+
 	private static final String database = "kats";
 	private static final String host = "localhost";
 	private static final String url = String.format("jdbc:mysql://%s/%s", host, database);
@@ -14,7 +16,6 @@ public class Database implements edu.csula.storage.Database{
 
 
 	public Database() {
-		System.out.println(url + " this is the url");
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch( ClassNotFoundException e ) {

@@ -1,4 +1,4 @@
-sssclass PubSub {
+class PubSub {
     constructor () {
         this.subscribers = [];
     }
@@ -13,48 +13,48 @@ sssclass PubSub {
     publish (data) {
         this.subscribers.forEach(subscriber => {
             subscriber(data);
-        });
+    });
     }
 }
 
 //=======================================================================
 
 //const store = new Store(reducer, {});
-const pubSub s= new PubSub();
+const pubSub = new PubSub();
 
 window.incrementalGame = {
-        state: {
-            counter: 0
-        }
-    };
-	
-	const steal = document.getElementById("you-steal");
-	//const test_button = document.getElementById("test-button");
-	
-	
+    state: {
+        counter: 0
+    }
+};
+
+const steal = document.getElementById("you-steal");
+//const test_button = document.getElementById("test-button");
+
+
 
 //	test_button.addEventListener('click', () =>{
 //		changeExample();
 //	});
-	
 
-	
-	
-	var div = document.getElementById("count");
-	
-	pubSub.subscribe(incr => {
-		window.incrementalGame.state.counter ++;
-	});
-	
-	
-	
-	steal.addEventListener('click', () => {
-		pubSub.publish(window.incrementalGame.state.counter);
-		div.textContent = window.incrementalGame.state.counter;
-		console.log(window.incrementalGame.state.counter);
-	});
-	
-	
+
+
+
+var div = document.getElementById("count");
+
+pubSub.subscribe(incr => {
+    window.incrementalGame.state.counter ++;
+});
+
+
+
+steal.addEventListener('click', () => {
+    pubSub.publish(window.incrementalGame.state.counter);
+div.textContent = window.incrementalGame.state.counter;
+console.log(window.incrementalGame.state.counter);
+});
+
+
 
 
 

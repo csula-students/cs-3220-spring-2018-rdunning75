@@ -18,6 +18,7 @@ export default class Story {
 	 */
 	isUnlockYet (value) {
 		// TODO: implement based on doc
+		if(value = )
 		return false;
 	}
 

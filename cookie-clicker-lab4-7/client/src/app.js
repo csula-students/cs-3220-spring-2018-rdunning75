@@ -71,15 +71,18 @@ import StoryBookComponent from './views/story-book';
  */
 main();
 
+
+//baseCost: cost, 
+//description: description, 
+//name : name, 
+//quantity: totalAmount2, 
+//rate:totalGen, type:"autonomous", 
+//unlockValue: cost,
+
 // main function wraps everything at top level
 function main () {
 	// TODO: fill the blank based on the theme you have choosen
-	const initialState = {
-		example: 'Hello custom element',
-		counter: 0,
-		generators: [],
-		stories: []
-	};
+	const initialState = window.game.state;
 
 	// initialize store
 	const store = new Store(reducer, initialState);

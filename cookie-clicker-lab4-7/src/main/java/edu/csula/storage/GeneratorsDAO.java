@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import edu.csula.models.Generator;
 
-//import edu.csula.models.Generator;
 
 /**
  * EventsDAO defines the database access layer between the business layer and

@@ -14,7 +14,7 @@ public interface EventsDAO {
 	/**
 	 * Find all events given storage
 	 */
-	public List<Event> getAll() throws SQLException;
+	public List<Event> getAll();
 	/**
 	 * Find certain event given its id
 	 */
